@@ -9,13 +9,13 @@ import matplotlib.pyplot as plt #visualization
 from matplotlib import style # ^
 style.use("ggplot")
 
+CSV_START_COLUMN = 0
+CSV_START_COLUMN = 44
 #FULL DATA
 DATASET = np.genfromtxt('statistics.csv', delimiter=',', skip_header=1, 
-    
-    #referring to indices of statsheet
-    usecols=np.arange(0,43), invalid_raise=False)
-LABELS = DATASET[:,42]
-# print(LABELS)
+    usecols=np.arange(CSV_START_COLUMN,CSV_START_COLUMN), invalid_raise=False)
+LABELS = DATASET[:,CSV_START_COLUMN-1]
+print(LABELS)
 # print()
 
 SVMS = []
