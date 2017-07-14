@@ -9,7 +9,20 @@ import matplotlib.pyplot as plt #visualization
 from matplotlib import style # ^
 style.use("ggplot")
 
-#######methods########
+#FULL DATA
+DATASET = np.genfromtxt('playerstats.csv', delimiter=',', skip_header=1, 
+    usecols=[16,17,18,19,20], invalid_raise=False)
+LABELS = DATASET[:,4]
+print(LABELS)
+print()
+
+SVMS = []
+
+STATS = []
+
+COLORS = ['red','blue','cyan','magenta','black','green']
+
+#METHODS
 def combineData(values1, values2):
     combined_stats = []
     for a in range(values1.size):
@@ -18,39 +31,38 @@ def combineData(values1, values2):
     combined_stats = np.array(combined_stats)
     return combined_stats
 
-def queueVisualization(the_svm, stats, label, line_color):
-    w = the_svm.coef_[0]
-    a = -w[0] / w[1]
-    xx = np.linspace(0,65)
-    yy = a * xx - the_svm.intercept_[0] / w[1]
-    h0 = plt.plot(xx, yy, '-', label=label, color=line_color)
-    plt.scatter(stats[:, 0], stats[:, 1], c = labels)
+def fit(col1, col2):
+    stats1 = DATASET[:,col1]
+    print(stats1)
+    print()
+    stats2 = DATASET[:,col2]
+    print(stats2)
+    print()
+    a_stat_set = combineData(stats1, stats2)
+    STATS.append(a_stat_set)
+    an_svm = svm.SVC(kernel='linear', C = 1.0)
+    an_svm.fit(a_stat_set, LABELS)
+    SVMS.append(an_svm)
 
-#FULL DATA
-dataset = np.genfromtxt('svm-stats.csv', delimiter=',', skip_header=1, 
-    usecols=[1,2,3,4,5], invalid_raise=False)
-labels = dataset[:,4]
+def queueVisual():
+    for index in range(len(STATS)):
+        the_svm = SVMS[index]
+        the_stats = STATS[index]
+        line_color = COLORS[index]
+        w = the_svm.coef_[0]
+        a = -w[0] / w[1]
+        xx = np.linspace(0,65)
+        yy = a * xx - the_svm.intercept_[0] / w[1]
+        h0 = plt.plot(xx, yy, '-', label='whaddup', color=line_color)
+        plt.scatter(the_stats[:, 0], the_stats[:, 1], c = LABELS)
 
-#SCORING 
-ts_stats = dataset[:,0]
-ppg_stats = dataset[:,1]
+#scoring (1st SVM, 1st stats array, 1st and 2nd columns in dataset)
+fit(0, 1)
+#usage/efficiency
+fit(2, 3)  
 
-scoring_stats = combineData(ts_stats, ppg_stats)
-ppg_svm = svm.SVC(kernel='linear', C = 1.0)
-ppg_svm.fit(scoring_stats, labels)  
-
-#USAGE AND EFFICIENCY
-usage_stats = dataset[:,2]
-per_stats = dataset[:,3]
-
-efficiency_stats = combineData(usage_stats, per_stats)
-eff_svm = svm.SVC(kernel='linear', C = 1.0)
-eff_svm.fit(efficiency_stats, labels)  
-
-#VISUALIZE
-queueVisualization(ppg_svm, scoring_stats, "TS% vs PPG","blue")
-queueVisualization(eff_svm, efficiency_stats, "Usage% vs PER","red")
-
+#visuals
+queueVisual()
 plt.legend()
 plt.show()
 
