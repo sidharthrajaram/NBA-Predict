@@ -15,7 +15,7 @@ CSV_START_COLUMN = 44
 DATASET = np.genfromtxt('statistics.csv', delimiter=',', skip_header=1, 
     usecols=np.arange(CSV_START_COLUMN,CSV_START_COLUMN), invalid_raise=False)
 LABELS = DATASET[:,CSV_START_COLUMN-1]
-print(LABELS)
+# print(LABELS)
 # print()
 
 SVMS = []
