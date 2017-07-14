@@ -15,8 +15,8 @@ DATASET = np.genfromtxt('statistics.csv', delimiter=',', skip_header=1,
     #referring to indices of statsheet
     usecols=np.arange(0,43), invalid_raise=False)
 LABELS = DATASET[:,42]
-print(LABELS)
-print()
+# print(LABELS)
+# print()
 
 SVMS = []
 
@@ -33,13 +33,13 @@ def combineData(values1, values2):
     combined_stats = np.array(combined_stats)
     return combined_stats
 
-def fit(col1, col2):
+def statFit(col1, col2):
     stats1 = DATASET[:,col1]
-    print(stats1)
-    print()
+    # print(stats1)
+    # print()
     stats2 = DATASET[:,col2]
-    print(stats2)
-    print()
+    # print(stats2)
+    # print()
     a_stat_set = combineData(stats1, stats2)
     STATS.append(a_stat_set)
     an_svm = svm.SVC(kernel='linear', C = 1.0)
@@ -59,19 +59,22 @@ def queueVisual():
         h0 = plt.plot(xx, yy, '-', label=index, color=line_color)
         plt.scatter(the_stats[:, 0], the_stats[:, 1], c = LABELS)
 
-#TS%/PPG
-fit(9, 28)
+if __name__ == "__main__":
+   # stuff only to run when not called via 'import' here
 
-#usage/PER
-fit(19, 8)  
+    #TS%/PPG
+    statFit(9, 28)
 
-#VORP/WS
-fit(27, 22)
+    #usage/PER
+    statFit(19, 8)  
 
-#visuals
-queueVisual()
-plt.legend()
-plt.show()
+    #VORP/WS
+    statFit(27, 22)
+
+    #visuals
+    queueVisual()
+    plt.legend()
+    plt.show()
 
 
 
