@@ -6,4 +6,6 @@ import matplotlib.pyplot as plt #visualization
 from matplotlib import style # ^
 style.use("ggplot")
 
+from nba-predict-svm.py import fit(col1, col2)
+
 # lol

@@ -11,14 +11,10 @@ style.use("ggplot")
 
 #FULL DATA
 DATASET = np.genfromtxt('statistics.csv', delimiter=',', skip_header=1, 
-    #9 = TS
-    #28 = PPG
-    #19 = USG
-    #8 = PER
-    #27 = VORP
-    #22 = 
-    usecols=[9,28,19,8,26,22,43], invalid_raise=False)
-LABELS = DATASET[:,6]
+    
+    #referring to indices of statsheet
+    usecols=np.arange(0,43), invalid_raise=False)
+LABELS = DATASET[:,42]
 print(LABELS)
 print()
 
@@ -49,6 +45,7 @@ def fit(col1, col2):
     an_svm = svm.SVC(kernel='linear', C = 1.0)
     an_svm.fit(a_stat_set, LABELS)
     SVMS.append(an_svm)
+    return an_svm #for use in nba-predict.py
 
 def queueVisual():
     for index in range(len(STATS)):
@@ -57,16 +54,19 @@ def queueVisual():
         line_color = COLORS[index]
         w = the_svm.coef_[0]
         a = -w[0] / w[1]
-        xx = np.linspace(0,65)
+        xx = np.linspace(-4,35)
         yy = a * xx - the_svm.intercept_[0] / w[1]
         h0 = plt.plot(xx, yy, '-', label=index, color=line_color)
         plt.scatter(the_stats[:, 0], the_stats[:, 1], c = LABELS)
 
-#scoring (1st SVM, 1st stats array, 1st and 2nd columns in dataset)
-fit(0, 1)
-#usage/efficiency
-fit(2, 3)  
-fit(4,5)
+#TS%/PPG
+fit(9, 28)
+
+#usage/PER
+fit(19, 8)  
+
+#VORP/WS
+fit(27, 22)
 
 #visuals
 queueVisual()
