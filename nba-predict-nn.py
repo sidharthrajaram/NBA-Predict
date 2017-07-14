@@ -19,7 +19,7 @@ def sigmoid(data,deriv=False):
     
 # input dataset
 dataset = np.genfromtxt('playerstats.csv', delimiter=',', skip_header=1, 
-    usecols=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], invalid_raise=False)
+    usecols=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,19], invalid_raise=False)
 X = np.array(dataset[:,0:METRICS])
 
 # output dataset

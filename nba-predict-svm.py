@@ -11,7 +11,7 @@ style.use("ggplot")
 
 #FULL DATA
 DATASET = np.genfromtxt('playerstats.csv', delimiter=',', skip_header=1, 
-    usecols=[16,17,18,19,20], invalid_raise=False)
+    usecols=[15,16,17,18,19], invalid_raise=False)
 LABELS = DATASET[:,4]
 print(LABELS)
 print()
@@ -53,7 +53,7 @@ def queueVisual():
         a = -w[0] / w[1]
         xx = np.linspace(0,65)
         yy = a * xx - the_svm.intercept_[0] / w[1]
-        h0 = plt.plot(xx, yy, '-', label='whaddup', color=line_color)
+        h0 = plt.plot(xx, yy, '-', label=index, color=line_color)
         plt.scatter(the_stats[:, 0], the_stats[:, 1], c = LABELS)
 
 #scoring (1st SVM, 1st stats array, 1st and 2nd columns in dataset)
