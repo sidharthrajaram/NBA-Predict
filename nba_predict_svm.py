@@ -62,7 +62,7 @@ def queueVisual():
 if __name__ == "__main__":
    # stuff only to run when not called via 'import' here
 
-    #TS%/PPG
+    # TS%/PPG
     statFit(9, 28)
 
     #usage/PER
@@ -70,6 +70,7 @@ if __name__ == "__main__":
 
     #VORP/WS
     statFit(27, 22)
+    statFit(19,18)
 
     #visuals
     queueVisual()

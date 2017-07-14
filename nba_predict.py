@@ -12,7 +12,7 @@ from matplotlib import style # ^
 style.use("ggplot")
 from nba_predict_svm import statFit
 
-METRIC_SETS = 3
+METRIC_SETS = 5
 
 #SVM TRAINING 
 
@@ -22,14 +22,29 @@ scoring_svm = statFit(9,28)
 efficiency_svm = statFit(19, 8)  
 #VORP/WS
 value_svm = statFit(27, 22)
+#usage/TOV%
+further_efficiency_svm = statFit(19,18)
+#GP/WS48
+durability_svm = statFit(6, 23)
+#3PAr/FTr
+# shooting_freq_svm = statFit(10,11)
+
+#IQ/PER
+iq_svm = statFit(30, 8)  
+
+
+#FTr/FT%
+
 
 #CSV Reading and Predict 
 #we still haven't trained on enough data so some STAR ratings will be blasphemous
-# e.g. Kobe Bryant has a 0.0 star rating right now!
+# e.g OJ MAYO!
 
 name = ''
 while(name != 'quit'):
 	name = input('Enter player name: ')
+	if(name == ''):
+		break
 	found = False
 	stat_row = 0
 	with open('statistics.csv', 'rt') as f:
@@ -43,15 +58,29 @@ while(name != 'quit'):
 		scoring_rating = scoring_svm.predict([[ stat_row[9], stat_row[28] ]])
 		efficiency_rating = efficiency_svm.predict([[ stat_row[19], stat_row[8] ]])
 		value_rating = value_svm.predict([[ stat_row[27], stat_row[22] ]])
+		further_efficiency_rating = further_efficiency_svm.predict([[ stat_row[19], stat_row[18]]])
+		durability_rating = durability_svm.predict([[ stat_row[6], stat_row[23]]])
+		# shoot_freq_rating = shooting_freq_svm.predict([[ stat_row[10], stat_row[11]]])
+		iq_rating = iq_svm.predict([[ stat_row[30], stat_row[8]]])
+
 
 		print(stat_row[0], "STAR rating based on TS/PPG: ",scoring_rating)
 		print(stat_row[0], "STAR rating based on Usage/PER",efficiency_rating)
 		print(stat_row[0], "STAR rating based on VORP/WS",value_rating)
+		print(stat_row[0], "STAR rating based on Usage/TOV%",further_efficiency_rating)
+		print(stat_row[0], "STAR rating based on GP/WS48",durability_rating)
+		print(stat_row[0], "STAR rating based on IQ/PER",iq_rating)
+
+		# print(stat_row[0], "STAR rating based on 3PAr/FTr",shoot_freq_rating)
+
+
 		print()
 
-		star_rating = (scoring_rating+efficiency_rating+value_rating)/METRIC_SETS
+		star_rating = (scoring_rating+efficiency_rating+value_rating+
+			further_efficiency_rating+durability_rating+ iq_rating)/METRIC_SETS
+
 		print(stat_row[0], "has a total rookie STAR rating of ",star_rating)
 	else:
-		print("No player found! Our humblest apologies!")
+		print(colored("No player found! Our humblest apologies!", 'red'))
 
 	print()
