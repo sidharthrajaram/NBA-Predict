@@ -7,6 +7,7 @@ from termcolor import colored
 
 METRICS = 14
 PLAYERS = 32
+CSV_START_COLUMN = 29
 n_epochs = 750000
 
 # sigmoid activation function
@@ -18,12 +19,15 @@ def sigmoid(data,deriv=False):
 
     
 # input dataset
-dataset = np.genfromtxt('playerstats.csv', delimiter=',', skip_header=1, 
-    usecols=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,19], invalid_raise=False)
-X = np.array(dataset[:,0:METRICS])
+dataset = np.genfromtxt('statistics.csv', delimiter=',', skip_header=1, 
+    usecols=np.arange(CSV_START_COLUMN,CSV_START_COLUMN+METRICS+1), 
+    invalid_raise=False)
+print(dataset)
+
+X = np.array(dataset[:,:14])
 
 # output dataset
-temp_y = np.array(dataset[:,METRICS])
+temp_y = np.array(dataset[:,14])
 y = temp_y.reshape((PLAYERS,1))
 
 np.random.seed(1)

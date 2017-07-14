@@ -10,9 +10,15 @@ from matplotlib import style # ^
 style.use("ggplot")
 
 #FULL DATA
-DATASET = np.genfromtxt('playerstats.csv', delimiter=',', skip_header=1, 
-    usecols=[15,16,17,18,19], invalid_raise=False)
-LABELS = DATASET[:,4]
+DATASET = np.genfromtxt('statistics.csv', delimiter=',', skip_header=1, 
+    #9 = TS
+    #28 = PPG
+    #19 = USG
+    #8 = PER
+    #27 = VORP
+    #22 = 
+    usecols=[9,28,19,8,26,22,43], invalid_raise=False)
+LABELS = DATASET[:,6]
 print(LABELS)
 print()
 
@@ -60,6 +66,7 @@ def queueVisual():
 fit(0, 1)
 #usage/efficiency
 fit(2, 3)  
+fit(4,5)
 
 #visuals
 queueVisual()
