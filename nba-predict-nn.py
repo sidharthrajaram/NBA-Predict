@@ -25,7 +25,6 @@ X = np.array(dataset[:,0:METRICS])
 # output dataset
 temp_y = np.array(dataset[:,METRICS])
 y = temp_y.reshape((PLAYERS,1))
-print()
 
 np.random.seed(1)
 
@@ -56,9 +55,10 @@ for a in range(l1.size):
 #for fun prediction
 print()
 print("PREDICTION")
-player_name = colored("Steve Rogers", 'cyan')
 
+player_name = colored("Steve Rogers", 'cyan')
 player_to_be_predicted = [[0,1,0,1,0,1,0,1,1,1,0,1,0,0]]
+
 prediction_value = sigmoid(np.dot(player_to_be_predicted,WEIGHTS))
 if(round(prediction_value[0][0]) == 1.0):
     status = "will be an NBA star!"
