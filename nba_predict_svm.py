@@ -9,12 +9,12 @@ import matplotlib.pyplot as plt #visualization
 from matplotlib import style # ^
 style.use("ggplot")
 
+CSV_START_COLUMN = 0
+CSV_END_COLUMN = 46
 #FULL DATA
 DATASET = np.genfromtxt('statistics.csv', delimiter=',', skip_header=1, 
-    
-    #referring to indices of statsheet
-    usecols=np.arange(0,43), invalid_raise=False)
-LABELS = DATASET[:,42]
+    usecols=np.arange(CSV_START_COLUMN,CSV_END_COLUMN), invalid_raise=False)
+LABELS = DATASET[:,CSV_START_COLUMN-1]
 # print(LABELS)
 # print()
 
@@ -62,7 +62,7 @@ def queueVisual():
 if __name__ == "__main__":
    # stuff only to run when not called via 'import' here
 
-    #TS%/PPG
+    # TS%/PPG
     statFit(9, 28)
 
     #usage/PER
@@ -70,6 +70,7 @@ if __name__ == "__main__":
 
     #VORP/WS
     statFit(27, 22)
+    statFit(19,18)
 
     #visuals
     queueVisual()
