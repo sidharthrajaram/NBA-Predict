@@ -10,10 +10,10 @@ from matplotlib import style # ^
 style.use("ggplot")
 
 CSV_START_COLUMN = 0
-CSV_START_COLUMN = 44
+CSV_END_COLUMN = 46
 #FULL DATA
 DATASET = np.genfromtxt('statistics.csv', delimiter=',', skip_header=1, 
-    usecols=np.arange(CSV_START_COLUMN,CSV_START_COLUMN), invalid_raise=False)
+    usecols=np.arange(CSV_START_COLUMN,CSV_END_COLUMN), invalid_raise=False)
 LABELS = DATASET[:,CSV_START_COLUMN-1]
 # print(LABELS)
 # print()

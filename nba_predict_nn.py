@@ -5,10 +5,10 @@
 import numpy as np
 from termcolor import colored
 
-METRICS = 14
+METRICS = 16
 PLAYERS = 32
 CSV_START_COLUMN = 0
-CSV_END_COLUMN = 44
+CSV_END_COLUMN = 46
 ONE_ZERO_DATA = 29
 n_epochs = 750000
 
@@ -66,7 +66,7 @@ print()
 print("PREDICTION")
 
 player_name = colored("Steve Rogers", 'cyan')
-player_to_be_predicted = [[0,1,0,1,0,1,0,1,1,1,0,1,0,0]]
+player_to_be_predicted = [[0,1,0,1,0,1,0,1,1,1,0,1,0,0,0,0]]
 
 prediction_value = sigmoid(np.dot(player_to_be_predicted,WEIGHTS))
 if(round(prediction_value[0][0]) == 1.0):

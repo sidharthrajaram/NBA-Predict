@@ -12,7 +12,7 @@ from matplotlib import style # ^
 style.use("ggplot")
 from nba_predict_svm import statFit
 
-METRIC_SETS = 5
+METRIC_SETS = 6
 
 #SVM TRAINING 
 
@@ -73,13 +73,23 @@ while(name != 'quit'):
 
 		# print(stat_row[0], "STAR rating based on 3PAr/FTr",shoot_freq_rating)
 
-
 		print()
 
 		star_rating = (scoring_rating+efficiency_rating+value_rating+
 			further_efficiency_rating+durability_rating+ iq_rating)/METRIC_SETS
 
-		print(stat_row[0], "has a total rookie STAR rating of ",star_rating)
+		result_part_one = "{0} has a total rookie STAR rating of {1}".format(stat_row[0], star_rating)
+
+		if(star_rating >= 1):
+			result_string = colored(result_part_one, 'green')
+		elif(star_rating >= 0.6):
+			result_string = colored(result_part_one, 'cyan')
+		elif(star_rating >= 0.2):
+			result_string = colored(result_part_one, 'yellow')
+		else:
+			result_string = colored(result_part_one, 'red')
+
+		print(result_string)
 	else:
 		print(colored("No player found! Our humblest apologies!", 'red'))
 
