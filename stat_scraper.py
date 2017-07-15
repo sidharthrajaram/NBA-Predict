@@ -1,5 +1,5 @@
 from googleapiclient.discovery import build
-import pprint
+import pandas as pd
 
 my_api_key = "AIzaSyC-djDYtVMjEJSubc8oaE-W-EEUrHJD0g0"
 my_cse_id = "013234493367067861201:e_sqh9dvrhy"
@@ -9,18 +9,11 @@ def google_search(search_term, api_key, cse_id, **kwargs):
     res = service.cse().list(q=search_term, cx=cse_id, **kwargs).execute()
     return res['items']
 
-results = google_search(
-    'westbrook', my_api_key, my_cse_id, num=1)
-for result in results:
-    print(result.keys())
+results = google_search('westbrook rookie gamelog', my_api_key, my_cse_id, num=1)
+print results[0]["formattedUrl"]
+a = pd.read_html("https://"+results[0]["formattedUrl"])
 
 '''
-def get_unique_id(player):
-	return "1234"
-
-def get_player_start(player_id):
-	return "2011"
-
 
 for player in all_players:
 	player_id = get_unique_id(player)
