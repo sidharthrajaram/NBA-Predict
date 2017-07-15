@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import requests
 import numpy as np
 
-my_api_key = "AIzaSyC-djDYtVMjEJSubc8oaE-W-EEUrHJD0g0" 
+my_api_key = "AIzaSyC-djDYtVMjEJSubc8oaE-W-EEUrHJD0g0" #NOTE: I USED ALL MY CALLS LOL SO GET A NEW KEY AND REGISTER SHIT
 my_cse_id = "013234493367067861201:e_sqh9dvrhy"
 
 def google_search(search_term, api_key, cse_id, **kwargs):
