@@ -5,11 +5,13 @@
 import numpy as np
 from termcolor import colored
 
-METRICS = 16
+#THESE ARE THINGS THAT SHOULD CHANGE ONCE OUR CSV BECOMES DYNAMIC
+METRICS = 16 
 PLAYERS = 32
 CSV_START_COLUMN = 0
 CSV_END_COLUMN = 46
 ONE_ZERO_DATA = 29
+
 n_epochs = 750000
 
 # sigmoid activation function

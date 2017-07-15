@@ -9,8 +9,10 @@ import matplotlib.pyplot as plt #visualization
 from matplotlib import style # ^
 style.use("ggplot")
 
+#THESE ARE THINGS THAT SHOULD CHANGE ONCE OUR CSV BECOMES DYNAMIC
 CSV_START_COLUMN = 0
 CSV_END_COLUMN = 46
+
 #FULL DATA
 DATASET = np.genfromtxt('statistics.csv', delimiter=',', skip_header=1, 
     usecols=np.arange(CSV_START_COLUMN,CSV_END_COLUMN), invalid_raise=False)
@@ -41,8 +43,9 @@ def statFit(col1, col2):
     # print(stats2)
     # print()
     a_stat_set = combineData(stats1, stats2)
+    # print(a_stat_set)
     STATS.append(a_stat_set)
-    an_svm = svm.SVC(kernel='linear', C = 1.0)
+    an_svm = svm.SVC(kernel='linear', C = 3)
     an_svm.fit(a_stat_set, LABELS)
     SVMS.append(an_svm)
     return an_svm #for use in nba-predict.py
@@ -54,7 +57,7 @@ def queueVisual():
         line_color = COLORS[index]
         w = the_svm.coef_[0]
         a = -w[0] / w[1]
-        xx = np.linspace(-4,35)
+        xx = np.linspace(-4,30)
         yy = a * xx - the_svm.intercept_[0] / w[1]
         h0 = plt.plot(xx, yy, '-', label=index, color=line_color)
         plt.scatter(the_stats[:, 0], the_stats[:, 1], c = LABELS)
@@ -63,14 +66,15 @@ if __name__ == "__main__":
    # stuff only to run when not called via 'import' here
 
     # TS%/PPG
-    statFit(9, 28)
+    # statFit(9, 28)
 
-    #usage/PER
-    statFit(19, 8)  
+    # #usage/PER
+    # statFit(8, 19)  
 
-    #VORP/WS
-    statFit(27, 22)
-    statFit(19,18)
+    # #VORP/WS
+    # statFit(27, 22)
+    # statFit(19,18)
+    # statFit(43, 44)
 
     #visuals
     queueVisual()

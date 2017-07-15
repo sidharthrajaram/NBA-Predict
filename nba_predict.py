@@ -12,7 +12,7 @@ from matplotlib import style # ^
 style.use("ggplot")
 from nba_predict_svm import statFit
 
-METRIC_SETS = 6
+METRIC_SETS = 7
 
 #SVM TRAINING 
 
@@ -28,9 +28,10 @@ further_efficiency_svm = statFit(19,18)
 durability_svm = statFit(6, 23)
 #3PAr/FTr
 # shooting_freq_svm = statFit(10,11)
-
 #IQ/PER
 iq_svm = statFit(30, 8)  
+#injury/Dleague
+uhoh_svm = statFit(43, 44)
 
 
 #FTr/FT%
@@ -62,23 +63,26 @@ while(name != 'quit'):
 		durability_rating = durability_svm.predict([[ stat_row[6], stat_row[23]]])
 		# shoot_freq_rating = shooting_freq_svm.predict([[ stat_row[10], stat_row[11]]])
 		iq_rating = iq_svm.predict([[ stat_row[30], stat_row[8]]])
+		uhoh_rating = uhoh_svm.predict([[ stat_row[43], stat_row[44]]])
 
 
-		print(stat_row[0], "STAR rating based on TS/PPG: ",scoring_rating)
-		print(stat_row[0], "STAR rating based on Usage/PER",efficiency_rating)
-		print(stat_row[0], "STAR rating based on VORP/WS",value_rating)
-		print(stat_row[0], "STAR rating based on Usage/TOV%",further_efficiency_rating)
-		print(stat_row[0], "STAR rating based on GP/WS48",durability_rating)
-		print(stat_row[0], "STAR rating based on IQ/PER",iq_rating)
+		print(stat_row[0], "STAR rating based on TS/PPG: ",scoring_rating[0])
+		print(stat_row[0], "STAR rating based on Usage/PER",efficiency_rating[0])
+		print(stat_row[0], "STAR rating based on VORP/WS",value_rating[0])
+		print(stat_row[0], "STAR rating based on Usage/TOV%",further_efficiency_rating[0])
+		print(stat_row[0], "STAR rating based on GP/WS48",durability_rating[0])
+		print(stat_row[0], "STAR rating based on IQ/PER",iq_rating[0])
+		print(stat_row[0], "STAR rating based on Injuries/Dleague",uhoh_rating[0])
+
 
 		# print(stat_row[0], "STAR rating based on 3PAr/FTr",shoot_freq_rating)
 
 		print()
 
 		star_rating = (scoring_rating+efficiency_rating+value_rating+
-			further_efficiency_rating+durability_rating+ iq_rating)/METRIC_SETS
+			further_efficiency_rating+durability_rating+ iq_rating+uhoh_rating)/METRIC_SETS
 
-		result_part_one = "{0} has a total rookie STAR rating of {1}".format(stat_row[0], star_rating)
+		result_part_one = "{0} has a total rookie STAR rating of {1}".format(stat_row[0], round(star_rating[0], 3))
 
 		if(star_rating >= 1):
 			result_string = colored(result_part_one, 'green')
