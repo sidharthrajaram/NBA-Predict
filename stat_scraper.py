@@ -17,7 +17,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
     service = build("customsearch", "v1", developerKey=api_key)
     res = service.cse().list(q=search_term, cx=cse_id, **kwargs).execute()
     return res['items']
-    
+
 # all_players = ["lil dicky", "Lebron James", "Stephen Curry", "Chris Paul"]
 player_feature_tensor = []
 for player in all_players:
@@ -39,4 +39,5 @@ for player in all_players:
 		pass
 
 print np.asarray(player_feature_tensor, dtype = float)
+np.savetxt('player_stats.txt', np.asarray(player_feature_tensor, dtype = float), delimiter=',') 
 
