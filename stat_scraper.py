@@ -22,7 +22,7 @@ for player in PLAYERS:
 	for index, row in df.iterrows():
 		if index == 0:
 			rookie_stats = row
-
+			break
 	rookie_stats = rookie_stats[:25]
 	print (np.asarray(rookie_stats))[5:]
 	print len((np.asarray(rookie_stats))[5:])
