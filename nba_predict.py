@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt #visualization
 from matplotlib import style # ^
 style.use("ggplot")
 from nba_predict_svm import statFit
+from stat_scraper import statRetrieval
 
 METRIC_SETS = 7
 
@@ -46,6 +47,15 @@ while(name != 'quit'):
 	name = input('Enter player name: ')
 	if(name == ''):
 		break
+
+	try:
+		statRetrieval(name)
+		print()
+		print(colored("ROOKIE BASE STATS FETCHED!", 'green'))
+		
+	except(RuntimeError, TypeError, NameError, KeyError, ValueError):
+		print("Ack!")
+
 	found = False
 	stat_row = 0
 	with open('statistics.csv', 'rt') as f:
@@ -56,6 +66,7 @@ while(name != 'quit'):
 				found = True
 	print()
 	if(found):
+
 		scoring_rating = scoring_svm.predict([[ stat_row[9], stat_row[28] ]])
 		efficiency_rating = efficiency_svm.predict([[ stat_row[19], stat_row[8] ]])
 		value_rating = value_svm.predict([[ stat_row[27], stat_row[22] ]])
@@ -94,7 +105,11 @@ while(name != 'quit'):
 			result_string = colored(result_part_one, 'red')
 
 		print(result_string)
+
 	else:
-		print(colored("No player found! Our humblest apologies!", 'red'))
+		if(name == ''):
+			break
+
+		print(colored("No player found in statistics.csv! Our humblest apologies!", 'red'))
 
 	print()

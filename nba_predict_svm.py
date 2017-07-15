@@ -62,11 +62,12 @@ def queueVisual():
         h0 = plt.plot(xx, yy, '-', label=index, color=line_color)
         plt.scatter(the_stats[:, 0], the_stats[:, 1], c = LABELS)
 
+#TESTIN SECTION
 if __name__ == "__main__":
    # stuff only to run when not called via 'import' here
 
     # TS%/PPG
-    # statFit(9, 28)
+    statFit(9, 28)
 
     # #usage/PER
     # statFit(8, 19)  
