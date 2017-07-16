@@ -60,7 +60,7 @@ def statRetrieval(player):
 #testing section
 if __name__ == "__main__":
 
-	statRetrieval("Damian Lillard")
+	# statRetrieval("Damian Lillard")
 
 	all_players = ["Kevin Durant"]
 
@@ -72,10 +72,14 @@ if __name__ == "__main__":
 		print("****************************")
 		try:
 			results = google_search(player, my_api_key, my_cse_id, num=1)
-			print(results[0]["formattedUrl"])
+			url = results[0]["formattedUrl"]
+			print(url)
 
 			try:
 				stats = pd.read_html("https://"+results[0]["formattedUrl"])
+				print("****************PAAAAAGE******************")
+				print(stats)
+				print("****************PAAAAAGE******************")
 
 				df = pd.DataFrame(stats[0])
 
