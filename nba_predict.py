@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt #visualization
 from matplotlib import style # ^
 style.use("ggplot")
 from nba_predict_svm import statFit
-from stat_scraper import statRetrieval
+from scraper import statRetrieval
 
 METRIC_SETS = 7
 
@@ -45,17 +45,21 @@ uhoh_svm = statFit(43, 44)
 name = ''
 while(name != 'quit'):
 	name = input('Enter player name: ')
+	print()
 	if(name == ''):
 		break
 
+	#this is the main sauce
 	try:
 		statRetrieval(name)
 		print()
-		print(colored("ROOKIE BASE STATS FETCHED!", 'green'))
-		
-	except(RuntimeError, TypeError, NameError, KeyError, ValueError):
-		print("Ack!")
+		print(colored("ROOKIE STATS FETCHED", 'green'))
 
+	except(RuntimeError, TypeError, NameError, KeyError, ValueError):
+		print("We weren't able to get this player's stats!")
+
+
+	#everything below will soon be phased out 
 	found = False
 	stat_row = 0
 	with open('statistics.csv', 'rt') as f:
@@ -112,4 +116,6 @@ while(name != 'quit'):
 
 		print(colored("No player found in statistics.csv! Our humblest apologies!", 'red'))
 
+	print()
+	print("******************************************************")
 	print()

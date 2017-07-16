@@ -1,3 +1,4 @@
+#DEPRECATED, CHECK SCRAPER.PY for current scraper
 from googleapiclient.discovery import build
 import pandas as pd
 from bs4 import BeautifulSoup
@@ -15,7 +16,7 @@ all_players = []
 for player in player_list:
 	all_players.append(player)
 
-my_api_key = "AIzaSyBFduswXFFPsvWucTdrHN7uL0050WH4SMo" 
+my_api_key = " " 
 my_cse_id = "013234493367067861201:e_sqh9dvrhy"
 
 def google_search(search_term, api_key, cse_id, **kwargs):
@@ -23,7 +24,7 @@ def google_search(search_term, api_key, cse_id, **kwargs):
     res = service.cse().list(q=search_term, cx=cse_id, **kwargs).execute()
     return res['items']
 
-def statRetrieval(player):
+def statRetrievalOld(player):
 	player_feature_tensor = []
 	print()
 	try:
@@ -93,7 +94,7 @@ if __name__ == "__main__":
 
 				print(len((np.asarray(rookie_stats))))
 				player_feature_tensor.append((np.asarray(rookie_stats)))
-				
+
 				print()
 				print(np.asarray(player_feature_tensor))
 
