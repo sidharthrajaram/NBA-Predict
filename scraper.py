@@ -30,18 +30,9 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #testing section
 if __name__ == "__main__":
 
-
-	# a = requests.get("http://www.basketball-reference.com/players/d/duranke01.html")
-	# soup = BeautifulSoup(a.text, 'lxml')
-	# # print(soup)
-	# # searching for the rows directly
-	# rows = soup.findAll('all_advanced')
-	# for row in rows:
-	# 	print(row.text)
-
-
 	base_url = "http://www.basketball-reference.com/players/d/duranke01.html"
 	url = base_url
+	player_feature_tensor = []
 
 	print()
 	with urllib.request.urlopen(url) as response:
@@ -55,18 +46,29 @@ if __name__ == "__main__":
 	tables = soup.findAll('table')
 	# print(tables[4])
 	rows = tables[4].findAll('tr')
-	# for row in rows:
-	# 	print()
-	# 	print()
-	# 	print()
-	# 	print()
-	# 	print()
-	# 	print()
-	# 	print()
 	data = rows[1].findAll('td')
-	for d in data:
-		print(d.string)
+
+	adv_stats = []
+	adv_stats = np.asarray(adv_stats)
+
+	for d in range(len(data)):
+		if(d>=4):
+			stat = data[d].text
+			try:
+				adv_stats = np.append(adv_stats,float(stat))
+				print(float(stat))
+			except(ValueError):
+				pass
+
 	print()
+	print(adv_stats)
+	player_feature_tensor.append((np.asarray(adv_stats)))
+
+	print("PFT:")
+	print(player_feature_tensor)
+	DATA_FILE = "scraped_stats.csv"
+	np.savetxt(DATA_FILE, player_feature_tensor,fmt='%1.3f', delimiter=',', newline='\r\n')
+	print("SAVED!")
 	# for table in soup.findAll('table'):
 	    
 

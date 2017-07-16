@@ -15,7 +15,7 @@ all_players = []
 for player in player_list:
 	all_players.append(player)
 
-my_api_key = "AIzaSyBTYpCnm4LlJmrXc-jUKXU9oFrQ6jnAPUI" 
+my_api_key = "AIzaSyBFduswXFFPsvWucTdrHN7uL0050WH4SMo" 
 my_cse_id = "013234493367067861201:e_sqh9dvrhy"
 
 def google_search(search_term, api_key, cse_id, **kwargs):
@@ -62,7 +62,7 @@ if __name__ == "__main__":
 
 	# statRetrieval("Damian Lillard")
 
-	all_players = ["Kevin Durant"]
+	all_players = ["Damian Lillard"]
 
 	#for caching test
 	# player_feature_tensor = np.genfromtxt('player_statistics.csv', delimiter=',', invalid_raise=False)
@@ -77,9 +77,6 @@ if __name__ == "__main__":
 
 			try:
 				stats = pd.read_html("https://"+results[0]["formattedUrl"])
-				print("****************PAAAAAGE******************")
-				print(stats)
-				print("****************PAAAAAGE******************")
 
 				df = pd.DataFrame(stats[0])
 
@@ -92,10 +89,13 @@ if __name__ == "__main__":
 
 				#print statements for python 3 
 				print(np.asarray(rookie_stats))
-
+				print("******")
 
 				print(len((np.asarray(rookie_stats))))
 				player_feature_tensor.append((np.asarray(rookie_stats)))
+				
+				print()
+				print(np.asarray(player_feature_tensor))
 
 				#for caching test
 				# player_feature_tensor = np.concatenate((player_feature_tensor, np.atleast_2d(np.asarray(rookie_stats))))
