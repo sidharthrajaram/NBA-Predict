@@ -1,4 +1,5 @@
 #DEPRECATED, CHECK SCRAPER.PY for current scraper
+
 from googleapiclient.discovery import build
 import pandas as pd
 from bs4 import BeautifulSoup
@@ -9,7 +10,7 @@ import numpy as np
 
 COLUMNS_START = 5
 COLUMNS_END = 30
-DATA_FILE = "player_statistics.csv"
+DATA_FILE = " "
 
 player_list = open("players.txt", "r")
 all_players = []

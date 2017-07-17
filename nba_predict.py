@@ -56,7 +56,7 @@ while(name != 'quit'):
 		print(colored("ROOKIE STATS FETCHED", 'green'))
 
 	except(RuntimeError, TypeError, NameError, KeyError, ValueError):
-		print("We weren't able to get this player's stats!")
+		print(colored("We weren't able to get this player's stats!",'red'))
 
 
 	#everything below will soon be phased out 

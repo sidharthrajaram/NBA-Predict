@@ -21,11 +21,19 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 def statRetrieval(player):
 
 	results = google_search(player, my_api_key, my_cse_id, num=1)
-	url = "https://"+results[0]["formattedUrl"]
-	print("ACCESSING",url)
+	prelim_url = results[0]["formattedUrl"]
 
-	# base_url = "https://www.basketball-reference.com/players/g/greendr01.html"
-	# url = base_url
+	# print("RESULTS")
+	# print(results[0]["formattedUrl"])
+	url = ""
+	if "https://" not in prelim_url: 
+		url = "https://"+results[0]["formattedUrl"]
+	else:
+		url = prelim_url
+
+	print("Accessing",url)
+
+	# url = ""
 	player_feature_tensor = []
 
 	print()
@@ -36,7 +44,6 @@ def statRetrieval(player):
 	content = re.sub(r'(?m)^\-->.*\n?', '', content)
 
 	soup = BeautifulSoup(content, 'html.parser')
-	# print(len(soup.findAll('table')))
 	tables = soup.findAll('table')
 
 	#boiler plate but whatever
@@ -84,10 +91,11 @@ def statRetrieval(player):
 	np.savetxt(DATA_FILE, player_feature_tensor,fmt='%1.3f', delimiter=',', newline='\r\n')
 	print("DATA SAVED!")
 
+
 #testing section
 if __name__ == "__main__":
 
-	try:
-		statRetrieval("alexABRINEs")
-	except:
-		print("We couldn't get the data on this player!")
+	# try:
+	statRetrieval("KARLANTHONYTOWNS")
+	# except:
+	# 	print("We couldn't get the data on this player!")
