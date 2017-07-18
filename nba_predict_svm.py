@@ -67,13 +67,13 @@ if __name__ == "__main__":
    # stuff only to run when not called via 'import' here
 
     # TS%/PPG
-    statFit(9, 28)
+    # statFit(9, 28)
 
     # #usage/PER
     # statFit(8, 19)  
 
     # #VORP/WS
-    # statFit(27, 22)
+    statFit(27, 22)
     # statFit(19,18)
     # statFit(43, 44)
 
