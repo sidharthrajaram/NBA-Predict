@@ -13,7 +13,7 @@ style.use("ggplot")
 CSV_START_COLUMN = 0
 CSV_END_COLUMN = 46
 
-#FULL DATA
+#TRAINING DATA
 DATASET = np.genfromtxt('statistics.csv', delimiter=',', skip_header=1, 
     usecols=np.arange(CSV_START_COLUMN,CSV_END_COLUMN), invalid_raise=False)
 LABELS = DATASET[:,CSV_START_COLUMN-1]
