@@ -44,7 +44,6 @@ uhoh_svm = statFit(43, 44)
 
 name = ''
 while(name != 'quit'):
-	NAME = False
 	
 	print()
 	name = input('Enter player name: ')
@@ -55,7 +54,6 @@ while(name != 'quit'):
 	#this is the main sauce
 	try:
 		PLAYER_DATA = statRetrieval(name)
-		print()
 
 	except(RuntimeError, TypeError, NameError, KeyError, ValueError):
 		print(colored("We weren't able to get this player's stats!",'red'))

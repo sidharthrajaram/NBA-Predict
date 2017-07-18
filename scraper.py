@@ -21,24 +21,26 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 
 def statRetrieval(player):
 	TABLES = False
-	results = google_search(player, my_api_key, my_cse_id, num=1)
-	prelim_url = results[0]["formattedUrl"]
 
-	# print("RESULTS")
-	# print(results[0]["formattedUrl"])
-	url = ""
-	if "https://" not in prelim_url: 
-		url = "https://"+results[0]["formattedUrl"]
-	else:
-		url = prelim_url
-
-	print("Accessing",url)
-
-	# url = ""
-	player_feature_tensor = []
-
-	print()
 	try:
+		results = google_search(player, my_api_key, my_cse_id, num=1)
+		prelim_url = results[0]["formattedUrl"]
+
+		# print("RESULTS")
+		# print(results[0]["formattedUrl"])
+		url = ""
+		if "https://" not in prelim_url: 
+			url = "https://"+results[0]["formattedUrl"]
+		else:
+			url = prelim_url
+
+		print("Accessing",url)
+
+		# url = ""
+		player_feature_tensor = []
+
+		print()
+
 		with urllib.request.urlopen(url) as response:
 			# UTF-8 doesn't support some initial character on the websites for some reason!
 			r = response.read().decode('latin-1')   		
@@ -63,7 +65,7 @@ def statRetrieval(player):
 		adv_stats = np.asarray(adv_stats)
 		TABLES = True
 
-	except(IndexError, ValueError):
+	except(IndexError, ValueError, KeyError):
 		print("No stats exist for this player. He better get on the court!")
 
 	if(TABLES == True):
@@ -98,6 +100,7 @@ def statRetrieval(player):
 
 		np.savetxt(DATA_FILE, player_feature_tensor,fmt='%1.3f', delimiter=',', newline='\r\n')
 		print("DATA SAVED!")
+		print()
 		return player_feature_tensor
 	else:
 		return False
@@ -106,6 +109,6 @@ def statRetrieval(player):
 if __name__ == "__main__":
 
 	# try:
-	statRetrieval("KARLANTHONYTOWNS")
+	statRetrieval("KARL ANTHONY TOWNS")
 	# except:
 	# 	print("We couldn't get the data on this player!")
