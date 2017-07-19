@@ -4,19 +4,28 @@
 
 import numpy as np 
 from sklearn import svm
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import StandardScaler
+
 
 import matplotlib.pyplot as plt #visualization
 from matplotlib import style # ^
 style.use("ggplot")
 
 #THESE ARE THINGS THAT SHOULD CHANGE ONCE OUR CSV BECOMES DYNAMIC
-CSV_START_COLUMN = 0
+CSV_START_COLUMN = 6
 CSV_END_COLUMN = 46
 
 #TRAINING DATA
 DATASET = np.genfromtxt('statistics.csv', delimiter=',', skip_header=1, 
     usecols=np.arange(CSV_START_COLUMN,CSV_END_COLUMN), invalid_raise=False)
-LABELS = DATASET[:,CSV_START_COLUMN-1]
+LABELS = DATASET[:,CSV_END_COLUMN-7]
+
+# rescaler = MinMaxScaler(feature_range=(0,1))
+# DATASET = rescaler.fit_transform(DATASET)
+
+distro_scaler = StandardScaler().fit(DATASET)
+DISTRO_DATA = distro_scaler.transform(DATASET)
 # print(LABELS)
 # print()
 
@@ -67,15 +76,15 @@ if __name__ == "__main__":
    # stuff only to run when not called via 'import' here
 
     # TS%/PPG
-    # statFit(9, 28)
+    # statFit(3, 22)
 
     # #usage/PER
-    # statFit(8, 19)  
+    # statFit(2, 13)  
 
     # #VORP/WS
-    statFit(27, 22)
-    # statFit(19,18)
-    # statFit(43, 44)
+    statFit(21, 16)
+    # statFit(13,12)
+    # statFit(37, 38)
 
     #visuals
     queueVisual()
