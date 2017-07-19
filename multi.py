@@ -30,11 +30,11 @@ Y_Int = np.array(Y).astype(int)
 
 classifer = OneVsRestClassifier(LinearSVC(random_state=0)).fit(X, Y)
 # print("TRAINING RUn")
-# print(classifer.predict(X))
+print(classifer.predict(X))
 # print()
 
-print("prediction")
-predict_data = [[31, 1000, 16.3, 0.5, 0.132, 0.275, 1.8, 12, 6.8, 24.6, 
-2.5, 0.5, 21.4, 20.4, 3, 1.6, 4.7, 0.077, 1.1, -0.7, 0.4, 0.7, 8.5]]
-predict_data = distro_scaler.transform(predict_data)
-print(classifer.predict(predict_data))
+# print("prediction")
+# predict_data = [[31, 908, 8.3, 0.5, 0.132, 0.275, 1.8, 12, 6.8, 24.6, 
+# 2.5, 0.5, 21.4, 20.4, 3, 1.6, 4.7, 0.077, 0.9, -1.2, -0.3, 0.0, 2.5]]
+# predict_data = distro_scaler.transform(predict_data)
+# print(classifer.predict(predict_data))
