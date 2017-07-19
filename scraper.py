@@ -2,6 +2,7 @@ from googleapiclient.discovery import build
 import pandas as pd
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
+from termcolor import colored
 import requests
 import urllib.request
 from io import StringIO
@@ -39,8 +40,6 @@ def statRetrieval(player):
 		# url = ""
 		player_feature_tensor = []
 
-		print()
-
 		with urllib.request.urlopen(url) as response:
 			# UTF-8 doesn't support some initial character on the websites for some reason!
 			r = response.read().decode('latin-1')   		
@@ -66,7 +65,7 @@ def statRetrieval(player):
 		TABLES = True
 
 	except(IndexError, ValueError, KeyError):
-		print("No stats exist for this player. He better get on the court!")
+		print(colored("No stats exist for this player. He better get on the court!",'red'))
 
 	if(TABLES == True):
 		for d in range(len(adv_data)):
@@ -99,7 +98,7 @@ def statRetrieval(player):
 		# print(np.asarray(player_feature_tensor))
 
 		np.savetxt(DATA_FILE, player_feature_tensor,fmt='%1.3f', delimiter=',', newline='\r\n')
-		print("DATA SAVED!")
+		print(colored("ROOKIE STATS FETCHED", 'green'))
 		print()
 		return player_feature_tensor
 	else:

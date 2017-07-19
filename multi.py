@@ -1,9 +1,4 @@
-from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import LabelEncoder
-from sklearn import datasets
-from sklearn.multiclass import OneVsRestClassifier
-from sklearn.svm import LinearSVC
-from sklearn import preprocessing
+from sklearn import svm
 import numpy as np
 
 np.random.seed(1)
@@ -17,24 +12,64 @@ DATASET = np.genfromtxt('training_set.csv', delimiter=',', skip_header=1,
 X = DATASET[:,:23]
 Y = DATASET[:,23]
 
-distro_scaler = StandardScaler().fit(X)
-X = distro_scaler.transform(X)
-# print(X)
-# print(Y)
+def combineData(values1, values2):
+    combined_stats = []
+    for a in range(values1.size):
+        result_component = [values1[a],values2[a]]
+        combined_stats.append(result_component)
+    combined_stats = np.array(combined_stats)
+    return combined_stats
 
-le = preprocessing.LabelEncoder()
-le.fit(["Generational Talent", "All Star", "Good Player", "Low Ceiling"])
-# print(list(le.classes_))
-Y_Int = np.array(Y).astype(int)
-# print(list(le.inverse_transform(Y_Int)))
+# TS%/PPG
+scoring_set = combineData(X[:,3], X[:,22])
+# #usage/PER
+efficiency_set = combineData(X[:,13], X[:,2])
+# #VORP/WS
+value_set = combineData(X[:,21], X[:,16])
+# #GP/WS48
+durability_set = combineData(X[:,0], X[:,17])
+# #USG/TOV%
+further_set = combineData(X[:,13], X[:,12])
 
-classifer = OneVsRestClassifier(LinearSVC(random_state=0)).fit(X, Y)
-# print("TRAINING RUn")
-print(classifer.predict(X))
-# print()
+classifier = svm.SVC()
 
-# print("prediction")
-# predict_data = [[31, 908, 8.3, 0.5, 0.132, 0.275, 1.8, 12, 6.8, 24.6, 
-# 2.5, 0.5, 21.4, 20.4, 3, 1.6, 4.7, 0.077, 0.9, -1.2, -0.3, 0.0, 2.5]]
-# predict_data = distro_scaler.transform(predict_data)
-# print(classifer.predict(predict_data))
+def scoringPredict(data):
+	classifier.fit(scoring_set, Y) 
+	print("STAR Scoring Rating:",classifier.predict(data)[0])
+	return classifier.predict(data)
+
+def efficiencyPredict(data):
+	classifier.fit(efficiency_set, Y) 
+	print("STAR Efficiency Rating:",classifier.predict(data)[0])
+	return classifier.predict(data)
+
+def valuePredict(data):
+	classifier.fit(value_set, Y) 
+	print("STAR Value Rating:",classifier.predict(data)[0])
+	return classifier.predict(data)
+
+def durabilityPredict(data):
+	classifier.fit(durability_set, Y) 
+	print("STAR Durability Rating:",classifier.predict(data)[0])
+	return classifier.predict(data)
+
+def furtherPredict(data):
+	classifier.fit(further_set, Y) 
+	print("STAR Further Rating:",classifier.predict(data)[0])
+	return classifier.predict(data)
+
+def compositePredict(player):
+	scoring = scoringPredict([[ player[1][3], player[0][23] ]])
+	efficiency = efficiencyPredict([[ player[1][13], player[1][2] ]])
+	value = valuePredict([[ player[1][23], player[1][17] ]])
+	durability = durabilityPredict([[ player[1][0], player[1][18] ]])
+	further = furtherPredict([[ player[1][13], player[1][12] ]])
+
+	prediction = (scoring+efficiency+value+durability+further)/5
+	return round(prediction[0],3)
+
+
+if __name__ == "__main__":
+	scoringPredict([[0.55,11.3]])
+
+

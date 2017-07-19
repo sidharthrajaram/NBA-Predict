@@ -21,11 +21,11 @@ DATASET = np.genfromtxt('statistics.csv', delimiter=',', skip_header=1,
     usecols=np.arange(CSV_START_COLUMN,CSV_END_COLUMN), invalid_raise=False)
 LABELS = DATASET[:,CSV_END_COLUMN-7]
 
-# rescaler = MinMaxScaler(feature_range=(0,1))
-# DATASET = rescaler.fit_transform(DATASET)
+rescaler = MinMaxScaler(feature_range=(0,1))
+DATASET = rescaler.fit_transform(DATASET)
 
-distro_scaler = StandardScaler().fit(DATASET)
-DISTRO_DATA = distro_scaler.transform(DATASET)
+#distro_scaler = StandardScaler().fit(DATASET)
+#DISTRO_DATA = distro_scaler.transform(DATASET)
 # print(LABELS)
 # print()
 
@@ -76,13 +76,13 @@ if __name__ == "__main__":
    # stuff only to run when not called via 'import' here
 
     # TS%/PPG
-    # statFit(3, 22)
+    statFit(3, 22)
 
     # #usage/PER
     # statFit(2, 13)  
 
     # #VORP/WS
-    statFit(21, 16)
+    # statFit(21, 16)
     # statFit(13,12)
     # statFit(37, 38)
 
