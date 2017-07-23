@@ -39,11 +39,11 @@ while(name != 'quit'):
 
 	if(PLAYER_DATA != False):
 
-		prediction = compositePredict(PLAYER_DATA) + 0.1 # bias
+		prediction = compositePredict(PLAYER_DATA)# bias
 		color = ''
-		if(prediction >= 0.8):
+		if(prediction >= 2):
 			color = 'green'
-		elif(prediction >= 0.5):
+		elif(prediction >= 1):
 			color = 'cyan'
 		elif(prediction >= 0.2):
 			color = 'yellow'
