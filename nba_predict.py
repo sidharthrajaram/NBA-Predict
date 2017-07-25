@@ -12,7 +12,8 @@ from matplotlib import style # ^
 style.use("ggplot")
 from nba_predict_svm import statFit
 from scraper import statRetrieval
-from multi import compositePredict
+from multi import compositePredict, offenseSkillWord, defenseSkillWord, efficiencySkillWord, durabilitySkillWord, sumUp
+from sentence import efficiencySent, scoringSent, defenseSent, durableSent, sumUpSent
 
 METRIC_SETS = 5
 PLAYER_DATA = []
@@ -39,7 +40,38 @@ while(name != 'quit'):
 
 	if(PLAYER_DATA != False):
 
-		prediction = compositePredict(PLAYER_DATA)# bias
+		prediction = compositePredict(PLAYER_DATA)
+		print()
+		summary = ''
+		try:
+			summary += efficiencySent(name, efficiencySkillWord(PLAYER_DATA)) + ' '
+		except(TypeError):
+			pass
+
+		try:	
+			summary += scoringSent(name, offenseSkillWord(PLAYER_DATA)) + ' '
+		except(TypeError):
+			pass
+
+		try:
+			summary += defenseSent(name, defenseSkillWord(PLAYER_DATA)) + ' '
+		except(TypeError):
+			pass
+
+		try:
+			summary += durableSent(name, durabilitySkillWord(PLAYER_DATA)) + ' '
+		except(TypeError):
+			pass
+
+		try:
+			summary += sumUpSent(name, sumUp(prediction))
+		except(TypeError):
+			pass
+
+		print()
+		print(summary)
+		print()
+
 		color = ''
 		if(prediction >= 2):
 			color = 'green'

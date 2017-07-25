@@ -173,6 +173,33 @@ def compositePredict(player):
 	# result += value(player)
 	return round(result,3)
 
+def offenseSkillWord(player):
+	if(offense(player) > 0):
+		return True
+	else:
+		return False
+
+def defenseSkillWord(player):
+	if(defense(player) > 0):
+		return True
+	else:
+		return False
+
+def efficiencySkillWord(player):
+	if(efficiency(player) > 0):
+		return True
+	else:
+		return False
+
+def durabilitySkillWord(player):
+	if(durability(player) > 0):
+		return True
+	else:
+		return False
+
+def sumUp(value):
+	if(value):
+		return True
 
 # if __name__ == "__main__":
 	# scoringPredict([[0.55,11.3]])
