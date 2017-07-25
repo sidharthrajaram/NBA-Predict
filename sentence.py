@@ -8,7 +8,7 @@ starResponses = [" has a high ceiling.",
 " is going to be great.", 
 " is going to be an all star."]
 
-scorerResponses = [" looks like he is gonna blossom into a high caliber scorer", 
+scorerResponses = [" looks like he is gonna blossom into a high caliber scorer.", 
 " shows signs of all star scoring ability.", 
 " can develop into a reliable scorer."]
 
