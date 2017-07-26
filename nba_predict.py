@@ -15,6 +15,9 @@ from scraper import statRetrieval
 from multi import compositePredict, offenseSkillWord, defenseSkillWord, efficiencySkillWord, durabilitySkillWord, sumUp
 from sentence import efficiencySent, scoringSent, defenseSent, durableSent, sumUpSent
 
+import pico
+from pico import PicoApp
+
 METRIC_SETS = 5
 PLAYER_DATA = []
 
@@ -25,6 +28,10 @@ PLAYER_DATA = []
 
 
 #consolidated methods
+app = PicoApp()
+app.register_module(__name__)
+
+@pico.expose()
 def predict(name):
 	try:
 		data = statRetrieval(name)
