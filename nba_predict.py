@@ -26,19 +26,25 @@ PLAYER_DATA = []
 # scoring_svm = statFit(9,28)
 
 
-
-#consolidated methods
-app = PicoApp()
-app.register_module(__name__)
+#to try out pico
+#python -m pico.server nba_predict
+#curl http://localhost:4242/nba_predict/predict/
 
 @pico.expose()
-def predict(name):
+def hello(who='world'):
+    return 'Hello %s' % who
+
+@pico.expose()
+def predict(name='Lebron James'):
 	try:
 		data = statRetrieval(name)
 		prediction = compositePredict(data)
 		return prediction
 	except(RuntimeError, TypeError, NameError, KeyError, ValueError):
 		return "We weren't able to get this player's stats!"
+
+app = PicoApp()
+app.register_module(__name__)
 
 def summary(name, PLAYER_DATA):
 	summary = ''
@@ -66,51 +72,51 @@ def summary(name, PLAYER_DATA):
 	return summary
 
 
+# if __name__ == "__main__":
 
-if __name__ == "__main__":
-	name = ''
-	while(name != 'quit'):
+	# name = ''
+	# while(name != 'quit'):
 		
-		print()
-		name = input('Enter player name: ')
+	# 	print()
+	# 	name = input('Enter player name: ')
 
-		if(name == 'quit' or name == ''):
-			break
+	# 	if(name == 'quit' or name == ''):
+	# 		break
 
-		#this is the main sauce
-		try:
-			PLAYER_DATA = statRetrieval(name)
+	# 	#this is the main sauce
+	# 	try:
+	# 		PLAYER_DATA = statRetrieval(name)
 
-		except(RuntimeError, TypeError, NameError, KeyError, ValueError):
-			print(colored("We weren't able to get this player's stats!",'red'))
+	# 	except(RuntimeError, TypeError, NameError, KeyError, ValueError):
+	# 		print(colored("We weren't able to get this player's stats!",'red'))
 
-		if(PLAYER_DATA != False):
+	# 	if(PLAYER_DATA != False):
 
-			prediction = compositePredict(PLAYER_DATA)			
-			print()
-			print(summary(name, PLAYER_DATA))
-			print()
+	# 		prediction = compositePredict(PLAYER_DATA)			
+	# 		print()
+	# 		print(summary(name, PLAYER_DATA))
+	# 		print()
 
-			color = ''
-			if(prediction >= 2):
-				color = 'green'
-			elif(prediction >= 1):
-				color = 'cyan'
-			elif(prediction >= 0.2):
-				color = 'yellow'
-			else:
-				color = 'red'
+	# 		color = ''
+	# 		if(prediction >= 2):
+	# 			color = 'green'
+	# 		elif(prediction >= 1):
+	# 			color = 'cyan'
+	# 		elif(prediction >= 0.2):
+	# 			color = 'yellow'
+	# 		else:
+	# 			color = 'red'
 
-			final = colored(prediction, color, attrs = ['bold'])
-			print("Composite STAR Rating:",final)
+	# 		final = colored(prediction, color, attrs = ['bold'])
+	# 		print("Composite STAR Rating:",final)
 
-			#OLD FORMAT
-			# scoring_rating = scoring_svm.predict([[ PLAYER_DATA[1][3], PLAYER_DATA[0][23] ]])
+	# 		#OLD FORMAT
+	# 		# scoring_rating = scoring_svm.predict([[ PLAYER_DATA[1][3], PLAYER_DATA[0][23] ]])
 				
-			# print("STAR rating based on TS/PPG: ",scoring_rating[0])
+	# 		# print("STAR rating based on TS/PPG: ",scoring_rating[0])
 
-			# star_rating = (scoring_rating+efficiency_rating+value_rating+
-			# 	further_efficiency_rating+durability_rating)/METRIC_SETS
+	# 		# star_rating = (scoring_rating+efficiency_rating+value_rating+
+	# 		# 	further_efficiency_rating+durability_rating)/METRIC_SETS
 
-		print()
-		print("******************************************************")
+	# 	print()
+	# 	print("******************************************************")
