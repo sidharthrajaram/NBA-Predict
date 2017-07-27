@@ -14,3 +14,5 @@ A little project to predict which NBA newbies can become superstars.
 - Prediction summary
 
 ###### All predictions and ratings are not **promised** to be representative of how good each respective player will become in any way. NBA-Predict is just a fun summer project which in no way is intended to make certain players look worse than others. All predictions and ratings are based off factual data.
+
+###### https://www.youtube.com/watch?v=AZUKEqkyJw0
