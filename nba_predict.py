@@ -35,10 +35,10 @@ def predict(name='Lebron James'):
 	try:
 		data = statRetrieval(name)
 		prediction = compositePredict(data)
-		return render_template("playground.html", prediction=prediction)
+		return render_template("index.html", prediction=prediction)
 
 	except(RuntimeError, TypeError, NameError, KeyError, ValueError):
-		return render_template("playground.html", prediction="We weren't able to get this player's stats!") 
+		return render_template("index.html", prediction="We weren't able to get this player's stats!") 
 
 def summary(name, PLAYER_DATA):
 	summary = ''
