@@ -15,8 +15,9 @@ from scraper import statRetrieval
 from multi import compositePredict, offenseSkillWord, defenseSkillWord, efficiencySkillWord, durabilitySkillWord, sumUp
 from sentence import efficiencySent, scoringSent, defenseSent, durableSent, sumUpSent
 
-import pico
-from pico import PicoApp
+from flask import Flask, request, render_template
+
+app = Flask(__name__)
 
 METRIC_SETS = 5
 PLAYER_DATA = []
@@ -25,26 +26,19 @@ PLAYER_DATA = []
 #TS%/PPG
 # scoring_svm = statFit(9,28)
 
-
-#to try out pico
-#python -m pico.server nba_predict
-#curl http://localhost:4242/nba_predict/predict/
-
-@pico.expose()
 def hello(who='world'):
     return 'Hello %s' % who
 
-@pico.expose()
+@app.route("/")
+@app.route("/<name>")
 def predict(name='Lebron James'):
 	try:
 		data = statRetrieval(name)
 		prediction = compositePredict(data)
-		return prediction
-	except(RuntimeError, TypeError, NameError, KeyError, ValueError):
-		return "We weren't able to get this player's stats!"
+		return render_template("playground.html", prediction=prediction)
 
-app = PicoApp()
-app.register_module(__name__)
+	except(RuntimeError, TypeError, NameError, KeyError, ValueError):
+		return render_template("playground.html", prediction="We weren't able to get this player's stats!") 
 
 def summary(name, PLAYER_DATA):
 	summary = ''
@@ -72,7 +66,8 @@ def summary(name, PLAYER_DATA):
 	return summary
 
 
-# if __name__ == "__main__":
+if __name__ == "__main__":
+	app.run(debug=True)
 
 	# name = ''
 	# while(name != 'quit'):
