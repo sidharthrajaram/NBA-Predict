@@ -16,16 +16,17 @@
     	var segment_str = window.location.pathname;
 		var segment_array = segment_str.split( '/' );
 		var last_segment = segment_array.pop();
-        display_name.innerHTML= last_segment;
+		var replaced = last_segment.replace(/%20/g, " ");
+		console.log( decodeURI(replaced) ); 
+        display_name.innerHTML= replaced;
     }
     </script>
 </head>
 <body onload="showName();">
 
    <div align="middle">
-      <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" height="118" width="320"></br></br></br></br>
-      <div style="padding-left: 0">
-      <!--
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" height="118" width="320"></br></br></br></br> </div>
+      <!-- <div style="padding-left: 0">
          <div class="card-form">.  WE CAN ADD THE SEARCH BOX IN LATER
             <form class="signup">
                <div class="form-body">
@@ -38,8 +39,8 @@
                </div>
             </form>
          </div>
-      </div> -->
-   </div>
+      </div> 
+   </div> -->
    </br></br>
    <div style="padding-left: 275px">
       <div style="text-align: left">
@@ -64,7 +65,6 @@
    </p>
    -->
    <footer>
-      <div id="container" style="display: inline">
          <a href="http://github.com/sidharthrajaram">sidharth rajaram</a></br>
          <a href="http://github.com/sudeeprao">sudeep rao</a></br>
          <div align="right" style="padding-right: 275px">
