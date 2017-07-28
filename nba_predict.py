@@ -29,6 +29,7 @@ PLAYER_DATA = []
 def hello(who='world'):
     return 'Hello %s' % who
 
+#main sauce
 @app.route("/")
 @app.route("/<name>")
 def predict(name=None):
@@ -36,13 +37,24 @@ def predict(name=None):
 		try:
 			data = statRetrieval(name)
 			prediction = compositePredict(data)
+
+			if(prediction == 0):
+				return render_template("index.html", prediction="0.0")
+
 			return render_template("index.html", prediction=prediction)
 
 		except(RuntimeError, TypeError, NameError, KeyError, ValueError):
+			#for this you have to render a different HTML file with the display of this text so it doesn't look whack
 			return render_template("index.html", prediction="We weren't able to get this player's stats!") 
+
 	else:
+		#means no player has been searched! make a different html file with presentation for this so 
+		#it doesn't say " ________ has a super potential of SEARCH!"
 		return render_template("index.html", prediction=None)
 
+
+
+#will implement later
 def summary(name, PLAYER_DATA):
 	summary = ''
 	try:
