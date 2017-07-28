@@ -43,14 +43,14 @@ def predict(name=None):
 
 			return render_template("index.html", prediction=prediction)
 
-		except(RuntimeError, TypeError, NameError, KeyError, ValueError):
+		except(RuntimeError, TypeError, NameError, KeyError, ValueError, IndexError):
 			#for this you have to render a different HTML file with the display of this text so it doesn't look whack
-			return render_template("index.html", prediction="We weren't able to get this player's stats!") 
+			return render_template("noplayer.html") 
 
 	else:
 		#means no player has been searched! make a different html file with presentation for this so 
 		#it doesn't say " ________ has a super potential of SEARCH!"
-		return render_template("index.html", prediction=None)
+		return render_template("prompt.html", prediction=None)
 
 
 
