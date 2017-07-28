@@ -1,6 +1,5 @@
 <!--doctype html>
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"> -->
-
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"> -->
 <!doctype html>
 <head>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,43 +10,42 @@
    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Alfa+Swlab+One|Roboto+Mono:300,300i,400,400i,500,700" rel="stylesheet">
    <title>NBA Predict</title>
-    <script type="text/JavaScript">
-    var segment_str = window.location.pathname;
-		var segment_array = segment_str.split( '/' );
-		var last_segment = segment_array.pop();
-		var replaced = last_segment.replace(/%20/g, " ");
-    function showName(){
-    	var segment_str = window.location.pathname;
-		var segment_array = segment_str.split( '/' );
-		var last_segment = segment_array.pop();
-		var replaced = last_segment.replace(/%20/g, " ");
-		console.log( decodeURI(replaced) ); 
-        display_name.innerHTML= replaced;
-    }
-    function search(){
-    	var loc = window.location;
-    	var name = document.getElementById("name").value;
-        window.location = name;
-    }
-    </script>
+   <script type="text/JavaScript">
+      var segment_str = window.location.pathname;
+      var segment_array = segment_str.split( '/' );
+      var last_segment = segment_array.pop();
+      var replaced = last_segment.replace(/%20/g, " ");
+      function showName(){
+        var segment_str = window.location.pathname;
+      var segment_array = segment_str.split( '/' );
+      var last_segment = segment_array.pop();
+      var replaced = last_segment.replace(/%20/g, " ");
+      console.log( decodeURI(replaced) ); 
+          display_name.innerHTML= replaced;
+      }
+      function search(){
+        var loc = window.location;
+        var name = document.getElementById("name").value;
+          window.location = name;
+      }
+   </script>
 </head>
 <body onload="showName();">
-
    <div align="middle">
       <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" height="118" width="320"></br></br></br></br> 
-         <div class="card-form">
-            <form class="signup">
-               <div class="form-body">
-                  <div class="row">
-                     <input type="text" placeholder="Enter Player's Name" id="name">
-                  </div>
+      <div class="card-form">
+         <form class="signup">
+            <div class="form-body">
+               <div class="row">
+                  <input type="text" placeholder="Enter Player's Name" id="name">
                </div>
-               <div class="form-footer" onclick="search()" value="submit" id="name">
-                  <a>Predict</a>
-               </div>
-            </form>
-         </div>
-      </div> 
+            </div>
+            <div class="form-footer" onclick="search()" value="submit" id="name">
+               <a>Predict</a>
+            </div>
+         </form>
+      </div>
+   </div>
    </div>
    </br></br> </div>
    <div style="padding-left: 275px">
@@ -56,31 +54,31 @@
          <!--<h1>Prediction: {{ prediction }}</h1>-->
          <h2>has a <span id="potential">superstar</span> potential of</h2>
          {% if prediction %}
-          <h3>{{ prediction }}</h3>
+         <h3>{{ prediction }}</h3>
          {% else %}
-          <h3>Search!</h3>
+         <h3>Search!</h3>
          {% endif %}
          <!--
-         <h2>the longform ___________________</h2>
-         </br>
-         <h4><b>0.6</b> potential of scoring development (POSDEV)</h4>
-         <h4><b>0.7</b> efficiency composite (ECOM)</h4>
-         <h4><b>0.6</b> value composite (VALCOM)</h4>
-         <h4><b>0.5</b> longterm durability projection (LODUP)</h4>
-         <h4><b>0.7</b> injury/demotion projection (INDEMP)</h4> -->
+            <h2>the longform ___________________</h2>
+            </br>
+            <h4><b>0.6</b> potential of scoring development (POSDEV)</h4>
+            <h4><b>0.7</b> efficiency composite (ECOM)</h4>
+            <h4><b>0.6</b> value composite (VALCOM)</h4>
+            <h4><b>0.5</b> longterm durability projection (LODUP)</h4>
+            <h4><b>0.7</b> injury/demotion projection (INDEMP)</h4> -->
       </div>
    </div>
    </br></br> 
    <!-- DEMO TEXT which also serves as Sudeep's opinion of NAV
-   <p><b>Nav</b> appears to be an incredibly mediocre "rapper" who' best ability is networking</br> 
-      The Weeknd claims him as his <b>protégé</b> he landed a song on Travis Scott’s <b>Birds in </br>
-      the Trap Sing McKnight</b> and he managed to slip somewhere into Drake’s <b>“Back to Back.”</b> </p> -->
+      <p><b>Nav</b> appears to be an incredibly mediocre "rapper" who' best ability is networking</br> 
+         The Weeknd claims him as his <b>protégé</b> he landed a song on Travis Scott’s <b>Birds in </br>
+         the Trap Sing McKnight</b> and he managed to slip somewhere into Drake’s <b>“Back to Back.”</b> </p> -->
    <footer>
-         <a href="http://github.com/sidharthrajaram">sidharth rajaram</a></br>
-         <a href="http://github.com/sudeeprao">sudeep rao</a></br>
-         <div align="right" style="padding-right: 275px">
-            <a href="https://github.com/sidharthrajaram/NBA-Predict"><img src="assets/github.png" alt="Check us out on Github" style="width:32px;height:32px;"></a>
-         </div>
+      <a href="http://github.com/sidharthrajaram">sidharth rajaram</a></br>
+      <a href="http://github.com/sudeeprao">sudeep rao</a></br>
+      <div align="right" style="padding-right: 275px">
+         <a href="https://github.com/sidharthrajaram/NBA-Predict"><img src="assets/github.png" alt="Check us out on Github" style="width:32px;height:32px;"></a>
+      </div>
       </div>
    </footer>
 </body>
