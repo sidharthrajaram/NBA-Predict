@@ -55,7 +55,11 @@
          <h1><span id = "display_name"></h1>
          <!--<h1>Prediction: {{ prediction }}</h1>-->
          <h2>has a <span id="potential">superstar</span> potential of</h2>
-         <h3>{{ prediction }}</h3>
+         {% if prediction %}
+          <h3>{{ prediction }}</h3>
+         {% else %}
+          <h3>Search!</h3>
+         {% endif %}
          <!--
          <h2>the longform ___________________</h2>
          </br>

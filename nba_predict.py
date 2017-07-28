@@ -31,14 +31,17 @@ def hello(who='world'):
 
 @app.route("/")
 @app.route("/<name>")
-def predict(name='Lebron James'):
-	try:
-		data = statRetrieval(name)
-		prediction = compositePredict(data)
-		return render_template("index.html", prediction=prediction)
+def predict(name=None):
+	if(name!=None):
+		try:
+			data = statRetrieval(name)
+			prediction = compositePredict(data)
+			return render_template("index.html", prediction=prediction)
 
-	except(RuntimeError, TypeError, NameError, KeyError, ValueError):
-		return render_template("index.html", prediction="We weren't able to get this player's stats!") 
+		except(RuntimeError, TypeError, NameError, KeyError, ValueError):
+			return render_template("index.html", prediction="We weren't able to get this player's stats!") 
+	else:
+		return render_template("index.html", prediction=None)
 
 def summary(name, PLAYER_DATA):
 	summary = ''
