@@ -12,6 +12,10 @@
    <link href="https://fonts.googleapis.com/css?family=Alfa+Swlab+One|Roboto+Mono:300,300i,400,400i,500,700" rel="stylesheet">
    <title>NBA Predict</title>
     <script type="text/JavaScript">
+    var segment_str = window.location.pathname;
+		var segment_array = segment_str.split( '/' );
+		var last_segment = segment_array.pop();
+		var replaced = last_segment.replace(/%20/g, " ");
     function showName(){
     	var segment_str = window.location.pathname;
 		var segment_array = segment_str.split( '/' );
@@ -20,28 +24,32 @@
 		console.log( decodeURI(replaced) ); 
         display_name.innerHTML= replaced;
     }
+    function search(){
+    	var loc = window.location;
+    	var name = document.getElementById("name").value;
+        window.location = name;
+    }
     </script>
 </head>
 <body onload="showName();">
 
    <div align="middle">
-      <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" height="118" width="320"></br></br></br></br> </div>
-      <!-- <div style="padding-left: 0">
-         <div class="card-form">.  WE CAN ADD THE SEARCH BOX IN LATER
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" height="118" width="320"></br></br></br></br> 
+         <div class="card-form">.  
             <form class="signup">
                <div class="form-body">
                   <div class="row">
                      <input type="text" placeholder="Enter Player's Name" id="name">
                   </div>
                </div>
-               <div class="form-footer" onclick="showName()" value="submit">
+               <div class="form-footer" onclick="search()" value="submit" id="name">
                   <a>Predict</a>
                </div>
             </form>
          </div>
       </div> 
-   </div> -->
-   </br></br>
+   </div>
+   </br></br> </div>
    <div style="padding-left: 275px">
       <div style="text-align: left">
          <h1><span id = "display_name"></h1>
