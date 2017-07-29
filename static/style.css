@@ -16,8 +16,10 @@
      line-height: 50%;
  }
  h2 {
-     font-size: 45px;
-     line-height: 25%;
+     font-size: 35px;
+     line-height: 50%;
+     font-weight: 220px;
+
  }
  h3 {
      font-size: 120px;
@@ -30,6 +32,12 @@
      padding-top: 0em;
      letter-spacing: 0.01em;
      font-weight: 300;
+ }
+
+ h5 {
+     font-size: 45px;
+     line-height: 50%;
+
  }
  p {
      font-size: 22px;
@@ -79,10 +87,12 @@
      -webkit-appearance: none;
      -moz-appearance: none;
      appearance: none;
-     width: 100%;
+     width: 10%;
      margin: 0 15px;
      height: 35px;
-     padding: 5px 15px;
+          padding-top: 30px;
+
+     padding: 10px 15px;
      border-radius: 5px;
      outline: none;
      border: none;
