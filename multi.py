@@ -177,6 +177,8 @@ def compositePredict(player):
 	result += 1.5*(durability(player))
 	# result += value(player)
 	result = 1.25*result
+	if(result >= 5):
+		result = 5
 	return round(result,3)
 
 def offenseSkillWord(player):
