@@ -1,128 +1,117 @@
- body,
- html {
-     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-     background: #ededf9;
-     font-weight: 300;
-     padding-top: 0em;
-     color: #39393b;
-     width: 100%;
-     height: 100%;
-     padding: 0px;
-     padding-top: 10px;
-     margin: 0px;
- }
- h1 {
-     font-size: 60px;
-     line-height: 50%;
- }
- h2 {
-     font-size: 35px;
-     line-height: 50%;
-     font-weight: 220px;
-
- }
- h3 {
-     font-size: 120px;
-     line-height: 0%;
- }
- h4 {
-     font-size: 24px;
-     line-height: 0%;
-     font-weight: 120;
-     padding-top: 0em;
-     letter-spacing: 0.01em;
-     font-weight: 300;
- }
-
- h5 {
-     font-size: 45px;
-     line-height: 50%;
-
- }
- p {
-     font-size: 22px;
-     padding-top: 0em;
-     letter-spacing: 0.01em;
-     font-weight: 300;
-     padding-bottom: 150px;
-     padding-left: 275px;
- }
- footer {
-     font-size: 18px;
-     padding-top: 1.5em;
-     padding-bottom: 1.5em;
-     letter-spacing: 0.01em;
-     font-weight: 100;
-     padding-left: 275px;
-     background: #39393b;
-     box-sizing: border-box;
-     position: relative;
-     width: 100%;
- }
- #potential {
-     color: #f95867;
- }
- .inline-block {
-     display: inline-block;
- }
- a {
-     text-decoration: none;
-     color: white;
- }
- .card-form {
-     width: 350px;
-     border-radius: 10px;
-     background: white;
-     box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15);
- }
- .card-form .form-body .row {
-     display: -webkit-box;
-     display: -ms-flexbox;
-     display: flex;
-     -ms-flex-pack: distribute;
-     justify-content: space-around;
-     padding: 10px;
- }
- .card-form .form-body .row input[type="text"] {
-     -webkit-appearance: none;
-     -moz-appearance: none;
-     appearance: none;
-     width: 10%;
-     margin: 0 15px;
-     height: 35px;
-          padding-top: 30px;
-
-     padding: 10px 15px;
-     border-radius: 5px;
-     outline: none;
-     border: none;
-     background: #e8ebed;
-     color: #576366;
-     font-size: 14px;
- }
- .card-form .rule {
-     height: 2px;
-     background: #e8ebed;
-     margin: 0px 35px;
- }
- .card-form .form-footer {
-     margin: 0 25px 15px 25px;
-     padding: 15px 0px;
- }
- .card-form .form-footer a {
-     display: inline-block;
-     width: 270px;
-     height: 40px;
-     line-height: 40px;
-     border: none;
-     border-radius: 5px;
-     padding: 5px 15px;
-     background: #f95867;
-     margin-right: 10px;
-     font-size: 14px;
-     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15);
- }
- /* random comment */
- .card-form .form-footer span {
-     margin-left: 8px;
- }
+body,
+html {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #ededf9;
+    font-weight: 300;
+    padding-top: 0em;
+    color: #39393b;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    padding-top: 10px;
+    margin: 0px;
+}
+h1 {
+    font-size: 60px;
+    line-height: 50%;
+}
+h2 {
+    font-size: 45px;
+    line-height: 25%;
+}
+h3 {
+    font-size: 120px;
+    line-height: 0%;
+}
+h4 {
+    font-size: 24px;
+    line-height: 0%;
+    font-weight: 120;
+    padding-top: 0em;
+    letter-spacing: 0.01em;
+    font-weight: 300;
+}
+p {
+    font-size: 22px;
+    padding-top: 0em;
+    letter-spacing: 0.01em;
+    font-weight: 300;
+    padding-bottom: 150px;
+    padding-left: 275px;
+}
+footer {
+    font-size: 18px;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    letter-spacing: 0.01em;
+    font-weight: 100;
+    padding-left: 275px;
+    background: #39393b;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+}
+#potential {
+    color: #f95867;
+}
+.inline-block {
+    display: inline-block;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+.card-form {
+    width: 350px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15);
+}
+.card-form .form-body .row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    padding: 10px;
+}
+.card-form .form-body .row input[type="text"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    margin: 0 15px;
+    height: 35px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background: #e8ebed;
+    color: #576366;
+    font-size: 14px;
+}
+.card-form .rule {
+    height: 2px;
+    background: #e8ebed;
+    margin: 0px 35px;
+}
+.card-form .form-footer {
+    margin: 0 25px 15px 25px;
+    padding: 15px 0px;
+}
+.card-form .form-footer a {
+    display: inline-block;
+    width: 270px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    background: #f95867;
+    margin-right: 10px;
+    font-size: 14px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15);
+}
+.card-form .form-footer span {
+    margin-left: 8px;
+}

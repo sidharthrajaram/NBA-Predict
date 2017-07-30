@@ -3,7 +3,7 @@
 <!doctype html>
 <head>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css?q=1280549780') }}">
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
    <meta name="msapplication-TileColor" content="#ffffff">
    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
    <meta name="theme-color" content="#ffffff">
@@ -20,7 +20,7 @@
       var segment_array = segment_str.split( '/' );
       var last_segment = segment_array.pop();
       var replaced = last_segment.replace(/%20/g, " ");
-      console.log( decodeURI(replaced) ); 
+      console.log( decodeURI(replaced) );
           display_name.innerHTML= replaced;
       }
       function search(){
@@ -32,7 +32,8 @@
 </head>
 <body onload="showName();">
    <div align="middle">
-      <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" height="118" width="320"></br></br></br></br> 
+      <a href="https://github.com/sidharthrajaram/NBA-Predict" target="_blank"><img src="{{ url_for('static', filename='predictlogo.png') }}" alt="Logo" height="118" width="500"></a>
+      </br></br></br></br>
       <div class="card-form">
          <form class="signup">
             <div class="form-body">
@@ -67,7 +68,7 @@
       </div>
    </div>
    </br></br> <!--
-      <p><b>Jaylen Brown</b> appears to be an incredible athletic player with an high upside and</br> 
+      <p><b>Jaylen Brown</b> appears to be an incredible athletic player with an high upside and</br>
          is a great finisher in the paint. <b>Jaylen Brown</b> is mediocre from <b>3pt range</b> for a</br>
          <b>forward</b> with <b>23% usage</b>
       </p>
@@ -75,10 +76,22 @@
    <footer>
       <a href="http://github.com/sidharthrajaram">sidharth rajaram</a></br>
       <a href="http://github.com/sudeeprao">sudeep rao</a></br>
-      <div align="right" style="padding-right: 275px">
-         <a href="https://github.com/sidharthrajaram/NBA-Predict"><img src="assets/github.png" alt="Check us out on Github" style="width:32px;height:32px;"></a>
+
+      <!--<div align="right" style="padding-right: 275px">-->
+      <!--   <a href="https://github.com/sidharthrajaram/NBA-Predict"><img src="assets/github.png" alt="Check us out on Github" style="width:32px;height:32px;"></a>-->
+      <!--</div>-->
+
+      <div align="left" style="padding-top: 20px; padding-right: 275px; padding left: 275px; line-height: 90%;">
+
+      <a style="color:gray; font-size: 12px;">All predictions and ratings are not promised to be representative of exactly how
+      good each respective player will actually become (but we shall try our best). NBA-Predict is just a
+      fun summer project which in no way is intended to make certain players look worse than others.
+      All predictions and ratings are based off factual data. Our prediction model is oriented around
+      favoring numerical, statistical prowess. Things like importance of games and presence of the "killer instinct"
+      are never accounted for.</a>
+
       </div>
-      </div>
+
    </footer>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <!doctype html>
 <head>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css?q=1280549780') }}">
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
    <meta name="msapplication-TileColor" content="#ffffff">
    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
    <meta name="theme-color" content="#ffffff">
@@ -20,7 +20,7 @@
       var segment_array = segment_str.split( '/' );
       var last_segment = segment_array.pop();
       var replaced = last_segment.replace(/%20/g, " ");
-      console.log( decodeURI(replaced) ); 
+      console.log( decodeURI(replaced) );
           display_name.innerHTML= replaced;
       }
       function search(){
@@ -32,45 +32,38 @@
 </head>
 <body onload="showName();">
    <div align="middle">
-      <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" height="118" width="320"></br></br></br></br> <div style="padding-bottom: 50px">
+      <a href="https://github.com/sidharthrajaram/NBA-Predict" target="_blank"><img src="{{ url_for('static', filename='predictlogo.png') }}" alt="Logo" height="118" width="500"></a>
+      </br></br></br></br>
+      <div style="padding-bottom: 50px">
                <h2>Type in a player's name to get started</h2>
          </div></div>
          <div align="middle">
    <div style="padding-left: 275px">
-      <div style="text-align: left">
-         <!--<h1>Prediction: {{ prediction }}</h1>--
-         <div style="padding-bottom: 50px">
-               <h2>Type in a player's name to get started!</h2>
-         </div>
-         <!--
-            <h2>the longform ___________________</h2>
-            </br>
-            <h4><b>0.6</b> potential of scoring development (POSDEV)</h4>
-            <h4><b>0.7</b> efficiency composite (ECOM)</h4>
-            <h4><b>0.6</b> value composite (VALCOM)</h4>
-            <h4><b>0.5</b> longterm durability projection (LODUP)</h4>
-            <h4><b>0.7</b> injury/demotion projection (INDEMP)</h4> -->
-      </div>
    </div>
-      <div class="card-form">
-         <form class="signup">
-            <div class="form-body">
-               <div class="row">
-                  <input type="text" placeholder="Enter Player's Name" id="name">
-               </div>
-            </div>
-            <div class="form-footer" onclick="search()" value="submit" id="name">
-               <a>Predict</a>
-            </div>
-         </form>
-      </div>
-   </div>
-   </div>
-   </br></br> </div>
+
+    <div style="padding-bottom: 45px">
+        <div class="card-form">
+            <form class="signup">
+                <div class="form-body">
+                    <div class="row">
+                        <input type="text" placeholder="Enter Player's Name" id="name">
+                    </div>
+                </div>
+                <div class="form-footer" onclick="search()" value="submit" id="name">
+                    <a>Predict</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    </br></br>
+    </div>
+    </div>
+
 
    </br></br> <!--
        DEMO TEXT which also serves as Sudeep's opinion of NAV
-      <p><b>NBA Predict</b> is a web app which looks for tendencies that current NBA stars exhibited </br> 
+      <p><b>NBA Predict</b> is a web app which looks for tendencies that current NBA stars exhibited </br>
       when they were rookies and applying those findings on today's rookies to predict future stars.</br>
       All predictions and ratings are not promised to be representative of how good each respective </br>
       player will ACTUALLY become (but we shall try our best). NBA-Predict is just a fun summer project </br>
@@ -81,10 +74,22 @@
    <footer>
       <a href="http://github.com/sidharthrajaram">sidharth rajaram</a></br>
       <a href="http://github.com/sudeeprao">sudeep rao</a></br>
-      <div align="right" style="padding-right: 275px">
-         <a href="https://github.com/sidharthrajaram/NBA-Predict"><img src="assets/github.png" alt="Check us out on Github" style="width:32px;height:32px;"></a>
+
+      <!--<div align="right" style="padding-right: 275px">-->
+      <!--   <a href="https://github.com/sidharthrajaram/NBA-Predict"><img src="assets/github.png" alt="Check us out on Github" style="width:32px;height:32px;"></a>-->
+      <!--</div>-->
+
+      <div align="left" style="padding-top: 20px; padding-right: 275px; padding left: 275px; line-height: 90%;">
+
+      <a style="color:gray; font-size: 12px;">All predictions and ratings are not promised to be representative of exactly how
+      good each respective player will actually become (but we shall try our best). NBA-Predict is just a
+      fun summer project which in no way is intended to make certain players look worse than others.
+      All predictions and ratings are based off factual data. Our prediction model is oriented around
+      favoring numerical, statistical prowess. Things like importance of games and presence of the "killer instinct"
+      are never accounted for.</a>
+
       </div>
-      </div>
+
    </footer>
 </body>
 </html>
