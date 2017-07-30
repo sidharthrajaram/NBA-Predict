@@ -1,4 +1,5 @@
 # NBA-Predict
+![the logo bro](/static/predictlogo.png?raw=true "Logo mane")
 A little project to predict which NBA newbies can become superstars.
 
 ## Phase 1:
