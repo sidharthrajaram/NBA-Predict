@@ -12,7 +12,7 @@ import re
 DATA_FILE = "scraped_stats.csv"
 TABLES = False
 
-my_api_key = "AIzaSyA2QJQCgifxblJ_kHTdH0PtlzAO-M_HoOI" #KEY EXPIRED Lol m8s
+my_api_key = "AIzaSyD6xN70JSDmf6O2EU_00XIM3JBR5pH3GFk" #KEY EXPIRED Lol m8s
 my_cse_id = "013234493367067861201:e_sqh9dvrhy"
 
 def google_search(search_term, api_key, cse_id, **kwargs):

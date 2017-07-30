@@ -67,6 +67,8 @@ def offense(player):
 stalwart = combineData(X[:,41], X[:,42])
 # #DBPM vs DBPM
 def_rating = combineData(X[:,19], X[:,19])
+# pf vs pf
+fouls = combineData(X[:,44], X[:,44])
 
 def defense(player):
 	result = 0.0
@@ -78,6 +80,10 @@ def defense(player):
 	# #DBpm vs DBPM
 	classifier.fit(def_rating, Y) 
 	result += classifier.predict([[ player[1][21], player[1][21] ]])[0]
+
+	# #pf vs pf
+	# classifier.fit(fouls, Y) 
+	# result += classifier.predict([[ player[0][22], player[0][22] ]])[0]
 
 	print("STAR Defensive Rating:",result)
 	return result
@@ -159,7 +165,6 @@ def value(player):
 	# #BPM / WS
 	# classifier.fit(box, Y) 
 	# result += classifier.predict([[ player[1][22], player[1][17] ]])[0]
-
 	print("STAR Value Rating:",result)
 	return result
 
@@ -169,8 +174,9 @@ def compositePredict(player):
 	result += offense(player)
 	result += defense(player)
 	result += efficiency(player)
-	result += durability(player)
+	result += 1.5*(durability(player))
 	# result += value(player)
+	result = 1.25*result
 	return round(result,3)
 
 def offenseSkillWord(player):

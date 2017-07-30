@@ -3,14 +3,12 @@
 #but for now it serves as a playground  
 
 import numpy as np
-from termcolor import colored
+# from termcolor import colored
 from sklearn import svm
-import csv
 
-import matplotlib.pyplot as plt #visualization
-from matplotlib import style # ^
-style.use("ggplot")
-from nba_predict_svm import statFit
+# import matplotlib.pyplot as plt #visualization
+# from matplotlib import style # ^
+# style.use("ggplot")
 from scraper import statRetrieval
 from multi import compositePredict, offenseSkillWord, defenseSkillWord, efficiencySkillWord, durabilitySkillWord, sumUp
 from sentence import efficiencySent, scoringSent, defenseSent, durableSent, sumUpSent
@@ -82,7 +80,17 @@ def summary(name, PLAYER_DATA):
 
 
 if __name__ == "__main__":
+
 	app.run(debug=True)
+	# name = 'Stephen Curry'
+
+	# data = statRetrieval(name)
+	# print(compositePredict(data))
+
+
+
+
+
 
 	# name = ''
 	# while(name != 'quit'):
