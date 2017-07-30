@@ -27,32 +27,6 @@ PLAYER_DATA = []
 def hello(who='world'):
     return 'Hello %s' % who
 
-#main sauce
-@app.route("/")
-@app.route("/<name>")
-def predict(name=None):
-	if(name!=None):
-		try:
-			data = statRetrieval(name)
-			prediction = compositePredict(data)
-
-			if(prediction == 0):
-				return render_template("index.html", prediction="0.0")
-
-			return render_template("index.html", prediction=prediction)
-
-		except(RuntimeError, TypeError, NameError, KeyError, ValueError, IndexError):
-			#for this you have to render a different HTML file with the display of this text so it doesn't look whack
-			return render_template("noplayer.html") 
-
-	else:
-		#means no player has been searched! make a different html file with presentation for this so 
-		#it doesn't say " ________ has a super potential of SEARCH!"
-		return render_template("prompt.html", prediction=None)
-
-
-
-#will implement later
 def summary(name, PLAYER_DATA):
 	summary = ''
 	try:
@@ -72,11 +46,38 @@ def summary(name, PLAYER_DATA):
 	except(TypeError):
 		pass
 	try:
-		summary += sumUpSent(name, sumUp(prediction))
+		summary += sumUpSent(name, sumUp(compositePredict(PLAYER_DATA)))
 	except(TypeError):
 		pass
-
 	return summary
+
+#main sauce
+@app.route("/")
+@app.route("/<name>")
+def predict(name=None):
+	if(name!=None):
+		try:
+			data = statRetrieval(name)
+			prediction = compositePredict(data)
+			longform = summary(name, data)
+
+			if(prediction == 0):
+				return render_template("index.html", prediction="0.0", longform=longform)
+
+			return render_template("index.html", prediction=prediction, longform=longform)
+
+		except(RuntimeError, TypeError, NameError, KeyError, ValueError, IndexError):
+			#for this you have to render a different HTML file with the display of this text so it doesn't look whack
+			return render_template("noplayer.html") 
+
+	else:
+		#means no player has been searched! make a different html file with presentation for this so 
+		#it doesn't say " ________ has a super potential of SEARCH!"
+		return render_template("prompt.html", prediction=None)
+
+
+
+#will implement later
 
 
 if __name__ == "__main__":
@@ -86,7 +87,8 @@ if __name__ == "__main__":
 
 	# data = statRetrieval(name)
 	# print(compositePredict(data))
-
+	# print()
+	# print(summary(name, data))
 
 
 
