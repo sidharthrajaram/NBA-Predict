@@ -6,7 +6,7 @@ np.random.seed(1)
 CSV_START_COLUMN = 6
 CSV_END_COLUMN = 53
 
-DATASET = np.genfromtxt('training.csv', delimiter=',', skip_header=1, 
+DATASET = np.genfromtxt('/home/sidrajaram/mysite/training.csv', delimiter=',', skip_header=1,
     usecols=np.arange(CSV_START_COLUMN,CSV_END_COLUMN), invalid_raise=False)
 
 X = DATASET[:,:46]
@@ -38,22 +38,22 @@ def offense(player):
 	result = 0.0
 
 	# #TS% vs PPG
-	classifier.fit(scoring_ability, Y) 
+	classifier.fit(scoring_ability, Y)
 	result += classifier.predict([[ player[1][3], player[0][23] ]])[0]
 
-	# classifier.fit(ft, Y) 
+	# classifier.fit(ft, Y)
 	# result += classifier.predict([[ player[1][4], player[0][14] ]])[0]
 
 	# # #FTr vs FT%
-	# classifier.fit(ft, Y) 
+	# classifier.fit(ft, Y)
 	# result += classifier.predict([[ player[1][5], player[0][14] ]])[0]
 
 	# # #AST vs TOV
-	# classifier.fit(passing, Y) 
+	# classifier.fit(passing, Y)
 	# result += classifier.predict([[ player[0][18], player[0][21] ]])[0]
 
 	# # #OWS vs WS
-	# classifier.fit(off_presence, Y) 
+	# classifier.fit(off_presence, Y)
 	# result += classifier.predict([[ player[1][15], player[1][17] ]])[0]
 
 	print("STAR Offensive Rating:",result)
@@ -74,15 +74,15 @@ def defense(player):
 	result = 0.0
 
 	# #STL vs BLK
-	classifier.fit(stalwart, Y) 
+	classifier.fit(stalwart, Y)
 	result += classifier.predict([[ player[0][20], player[0][19] ]])[0]
 
 	# #DBpm vs DBPM
-	classifier.fit(def_rating, Y) 
+	classifier.fit(def_rating, Y)
 	result += classifier.predict([[ player[1][21], player[1][21] ]])[0]
 
 	# #pf vs pf
-	# classifier.fit(fouls, Y) 
+	# classifier.fit(fouls, Y)
 	# result += classifier.predict([[ player[0][22], player[0][22] ]])[0]
 
 	print("STAR Defensive Rating:",result)
@@ -105,23 +105,23 @@ def efficiency(player):
 	result = 0.0
 
 	# #usage/PER
-	classifier.fit(efficiency_set, Y) 
+	classifier.fit(efficiency_set, Y)
 	result += classifier.predict([[ player[1][13], player[1][2] ]])[0]
 
 	# #USG/TOV%
-	classifier.fit(further_set, Y) 
+	classifier.fit(further_set, Y)
 	result += classifier.predict([[ player[1][13], player[1][12] ]])[0]
 
 	# # #MPG vs TOV
-	# classifier.fit(turnovers, Y) 
+	# classifier.fit(turnovers, Y)
 	# result += classifier.predict([[ player[0][1], player[0][21] ]])[0]
 
 	# # #FGA vs FGM
-	# classifier.fit(scoring_eff, Y) 
+	# classifier.fit(scoring_eff, Y)
 	# result += classifier.predict([[ player[0][3], player[0][2] ]])[0]
 
 	# #PER/PER lol
-	classifier.fit(per, Y) 
+	classifier.fit(per, Y)
 	result += classifier.predict([[ player[1][2], player[1][2] ]])[0]
 
 	print("STAR Efficiency Rating:",result)
@@ -140,7 +140,7 @@ def durability(player):
 	result = 0.0
 
 	# #MPG/MP
-	classifier.fit(play, Y) 
+	classifier.fit(play, Y)
 	result += classifier.predict([[ player[1][0], player[1][1] ]])[0]
 
 	print("STAR Durability Rating:",result)
@@ -159,11 +159,11 @@ def value(player):
 	result = 0.0
 
 	# #VORP/VORp
-	classifier.fit(value_set, Y) 
+	classifier.fit(value_set, Y)
 	result += classifier.predict([[ player[1][23], player[1][23] ]])[0]
 
 	# #BPM / WS
-	# classifier.fit(box, Y) 
+	# classifier.fit(box, Y)
 	# result += classifier.predict([[ player[1][22], player[1][17] ]])[0]
 	print("STAR Value Rating:",result)
 	return result
@@ -177,8 +177,8 @@ def compositePredict(player):
 	result += 1.5*(durability(player))
 	# result += value(player)
 	result = 1.25*result
-	# if(result >= 5):
-	# 	result = 5
+# 	if(result >= 5):
+# 		result = 5
 	return round(result,3)
 
 def offenseSkillWord(player):
@@ -206,7 +206,7 @@ def durabilitySkillWord(player):
 		return False
 
 def sumUp(value):
-	if(value):
+	if(value > 2.9):
 		return True
 
 # if __name__ == "__main__":
