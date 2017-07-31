@@ -10,23 +10,25 @@
    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Alfa+Swlab+One|Roboto+Mono:300,300i,400,400i,500,700" rel="stylesheet">
    <title>NBA Predict</title>
-   <script type="text/JavaScript">
+  <script type="text/JavaScript">
       var segment_str = window.location.pathname;
       var segment_array = segment_str.split( '/' );
       var last_segment = segment_array.pop();
       var replaced = last_segment.replace(/%20/g, " ");
+      var uniform = replaced.toLowerCase();
       function showName(){
-        var segment_str = window.location.pathname;
+      var segment_str = window.location.pathname;
       var segment_array = segment_str.split( '/' );
       var last_segment = segment_array.pop();
       var replaced = last_segment.replace(/%20/g, " ");
       console.log( decodeURI(replaced) );
-          display_name.innerHTML= replaced;
+      var uniform = replaced.toLowerCase();
+      display_name.innerHTML= uniform;
       }
       function search(){
         var loc = window.location;
         var name = document.getElementById("name").value;
-          window.location = name;
+        window.location = name;
       }
    </script>
 </head>
