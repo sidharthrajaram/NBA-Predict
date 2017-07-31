@@ -72,4 +72,5 @@ def predict(name=None):
 		return render_template("prompt.html", prediction=None)
 
 
-
+if __name__ == "__main__":
+    app.run()

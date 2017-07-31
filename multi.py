@@ -6,7 +6,7 @@ np.random.seed(1)
 CSV_START_COLUMN = 6
 CSV_END_COLUMN = 53
 
-DATASET = np.genfromtxt('/home/sidrajaram/mysite/training.csv', delimiter=',', skip_header=1,
+DATASET = np.genfromtxt('training.csv', delimiter=',', skip_header=1,
     usecols=np.arange(CSV_START_COLUMN,CSV_END_COLUMN), invalid_raise=False)
 
 X = DATASET[:,:46]
