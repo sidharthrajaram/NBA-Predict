@@ -5,19 +5,27 @@ html {
     font-weight: 300;
     padding-top: 0em;
     color: #39393b;
-    width: 100%;
+    width: 100vw;
     height: 100%;
     padding: 0px;
     padding-top: 10px;
     margin: 0px;
 }
+
+img {
+    width: 70%;
+    height: auto;
+}
+
 h1 {
-    font-size: 60px;
-    line-height: 50%;
+    font-size: 90px;
+    line-height: 80%;
+    margin:0;
+    padding:0;
 }
 h2 {
     font-size: 45px;
-    line-height: 25%;
+    line-height: 100%;
 }
 h3 {
     font-size: 120px;
@@ -37,7 +45,6 @@ p {
     letter-spacing: 0.01em;
     font-weight: 300;
     padding-bottom: 150px;
-    padding-left: 275px;
 }
 footer {
     font-size: 18px;
@@ -45,7 +52,7 @@ footer {
     padding-bottom: 1.5em;
     letter-spacing: 0.01em;
     font-weight: 100;
-    padding-left: 275px;
+    /*padding-left: 275px;*/
     background: #39393b;
     box-sizing: border-box;
     position: relative;
@@ -115,3 +122,10 @@ a {
 .card-form .form-footer span {
     margin-left: 8px;
 }
+
+@media (max-width: 600px) {
+footer {
+    width: 100%;
+}
+}
+

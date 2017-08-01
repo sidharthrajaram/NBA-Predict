@@ -2,7 +2,6 @@
    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"> -->
 <!doctype html>
 <head>
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
    <meta name="msapplication-TileColor" content="#ffffff">
    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
@@ -10,6 +9,8 @@
    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Alfa+Swlab+One|Roboto+Mono:300,300i,400,400i,500,700" rel="stylesheet">
    <title>NBA Predict</title>
+
+
    <script type="text/JavaScript">
       var segment_str = window.location.pathname;
       var segment_array = segment_str.split( '/' );
@@ -32,11 +33,13 @@
         window.location = name;
       }
    </script>
+
+
 </head>
 <body onload="showName();">
    <div align="middle">
-      <a href="https://github.com/sidharthrajaram/NBA-Predict" target="_blank"><img src="{{ url_for('static', filename='predictlogo.png') }}" alt="Logo" height="118" width="500"></a>
-      </br></br></br></br>
+      <a href="https://github.com/sidharthrajaram/NBA-Predict" target="_blank"><img src="{{ url_for('static', filename='predictlogo.png') }}" alt="Logo"></a>
+      </br></br></br>
       <div style="padding-bottom: 50px">
                <h2>Type in a player's name to get started</h2>
          </div></div>
@@ -73,7 +76,7 @@
       which in no way is intended to make certain players look worse than others. All predictions and </br>
       ratings are based off factual data.</p> -->
 
-
+   <div align="center">
    <footer>
       <a href="http://github.com/sidharthrajaram">sidharth rajaram</a></br>
       <a href="http://github.com/sudeeprao">sudeep rao</a></br>
@@ -82,7 +85,7 @@
       <!--   <a href="https://github.com/sidharthrajaram/NBA-Predict"><img src="assets/github.png" alt="Check us out on Github" style="width:32px;height:32px;"></a>-->
       <!--</div>-->
 
-      <div align="left" style="padding-top: 20px; padding-right: 275px; padding left: 275px; line-height: 90%;">
+      <div align="center" style="padding-top: 20px; width: 70%; line-height: 90%;">
 
       <a style="color:gray; font-size: 12px;">All predictions and ratings are not promised to be representative of exactly how
       good each respective player will actually become (but we shall try our best). NBA-Predict is just a
@@ -94,5 +97,6 @@
       </div>
 
    </footer>
+   </div>
 </body>
 </html>
