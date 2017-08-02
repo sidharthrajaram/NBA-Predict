@@ -12,9 +12,6 @@ import re
 DATA_FILE = "scraped_stats.csv"
 TABLES = False
 
-my_api_key = "AIzaSyD6xN70JSDmf6O2EU_00XIM3JBR5pH3GFk" #KEY EXPIRED Lol m8s
-my_cse_id = "013234493367067861201:e_sqh9dvrhy"
-
 def google_search(search_term, api_key, cse_id, **kwargs):
     service = build("customsearch", "v1", developerKey=api_key)
     res = service.cse().list(q=search_term, cx=cse_id, **kwargs).execute()
