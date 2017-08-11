@@ -1,5 +1,5 @@
 ![the logo bro](/static/predictlogo.png?raw=true "Logo mane")
-A fun little summer project to predict which NBA players will become superstars. :basketball: :star2: 
+A fun little summer project to predict how good NBA players can become based on their rookie stats. :basketball: 
 
 ### some (of the gazillion) numbers we track
 
