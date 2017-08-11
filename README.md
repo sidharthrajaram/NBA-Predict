@@ -11,6 +11,8 @@ A fun little summer project to predict which NBA players will become superstars.
 | `usage` 		| usage %!      |
 | `tov%` 		| mistake rate      |
 | `ts%` 		| scoring skill      |
+| `war` 		| record orientation      |
+| `WS` 		| win shares (!)      |
 
 ### how it works 
 We look at a broad sample set of (current and former) NBA players and their rookie statlines. Once we've done that we begin to track certain "between-the-lines" metrics that can give the best insight as to what rookie tendencies and on-court habits resulted in the development of stars. We then apply that model on **n** number of players' rookie statlines and then can see whether or not they may become stars. A good example of this would be Jimmy Butler. As a rookie, Jimmy Butler averaged 2.6 points and other absymal on-the-surface numbers, but our model was able to indicate that he had a solid chance at stardom. 
