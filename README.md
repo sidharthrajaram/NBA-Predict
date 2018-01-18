@@ -1,6 +1,17 @@
 ![the logo bro](/static/predictlogo.png?raw=true "Logo mane")
 A fun little summer project to predict which NBA players will become superstars. :basketball: :star2: 
 
+### some popular predictions of the 2017 class (still changing)
+###### KEY: 5+ generational talent, 4+ all star, 3+ star, 2+ starter, 1+ bench player, 0+ low ceiling
+| Player Name        | Prediction       | 
+|:-------------:|:-------------:| 
+| `Ben Simmons`| 3.75 | 
+| `Lauri Markkanen`| 3.75  | 
+| `Donovan Mitchell` 		| 3.75   |
+| `Jayson Tatum` 		| 5.0  |
+| `De'Aaron Fox` 		| 2.5      |
+| `Malik Monk` 		|  1.25 |
+
 ### some (of the gazillion) numbers we track
 
 | Metric        | Purpose       | 
