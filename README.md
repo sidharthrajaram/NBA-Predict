@@ -2,7 +2,7 @@
 A fun little summer project to predict how good NBA players can become based on their rookie stats. :basketball: 
 
 ### some popular predictions of the 2017 class (still changing)
-###### KEY: 5+ generational talent, 4+ all star, 3+ star, 2+ starter, 1+ bench player, 0+ low ceiling
+###### KEY:  0+ (>0% probability of stardom), 1+ (>10%), 2+ (>20%), 3+ (>45%), 4+ (>75%), 5+ (>90%). 
 | Player Name        | Prediction       | 
 |:-------------:|:-------------:| 
 | `Ben Simmons`| 3.75 | 
