@@ -1,4 +1,4 @@
-![the logo bro](/static/predictlogo.png?raw=true "Logo mane")
+![the logo bro](/cover_new.png?raw=true "Logo mane")
 A fun little summer project to predict how good NBA players can become based on their rookie stats. :basketball: 
 
 ### some popular predictions of the 2017 class (still changing)
