@@ -1,14 +1,14 @@
-![the logo bro](/cover_new.png?raw=true "Logo mane")
 A fun little summer project to predict how good NBA players can become based on their rookie stats. :basketball: 
+![new](/demo.png?raw=true "new mane")
 
-### some popular predictions of the 2017 class (still changing)
+### some popular searches
 ###### KEY:  0+ (>0% probability of stardom), 1+ (>10%), 2+ (>20%), 3+ (>45%), 4+ (>75%), 5+ (>90%). 
 | Player Name        | Prediction       | 
 |:-------------:|:-------------:| 
-| `Ben Simmons`| 3.75 | 
+| `Ben Simmons`| 5.00 | 
 | `Lauri Markkanen`| 3.75  | 
-| `Donovan Mitchell` 		| 3.75   |
-| `Jayson Tatum` 		| 5.0  |
+| `Donovan Mitchell` 		| 5.0   |
+| `Jayson Tatum` 		| 3.75  |
 | `De'Aaron Fox` 		| 2.5      |
 | `Malik Monk` 		|  1.25 |
 
