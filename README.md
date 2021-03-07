@@ -1,6 +1,8 @@
 # A fun little summer project to predict how good NBA players can become based on their rookie stats. :basketball: 
 ![new](/demo.png?raw=true "new mane")
 
+#### NBAPredict.io is now longer operational. Feel free to peruse through the code and check out some of my more recent NBA related work.
+
 ## Some popular searches
 ###### KEY:  0+ (>0% probability of stardom), 1+ (>10%), 2+ (>20%), 3+ (>45%), 4+ (>75%), 5+ (>90%). 
 | Player Name        | Prediction       | 
